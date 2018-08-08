@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div>
+        <p>Here you are, padawan!<br /> You need use your force and "Elements" tab to get a hidden password and login</p>
+    </div>
+    <form action="{{ url_for('login') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="password" placeholder="Password" type="password"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Log In</button>
+            </div>
+        </fieldset>
+    </form>
+    <div id="credentials" class="hidden">
+        Login: force, password: 0504
+    </div>
+{% endblock %}
