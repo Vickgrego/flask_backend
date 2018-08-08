@@ -5,7 +5,13 @@
 {% endblock %}
 
 {% block main %}
-    <form action="{{ url_for('register') }}" method="post">
+    <p>
+        <h2>
+            You have a power to create a new padawan!
+        </h2>
+        Use this power with responsibility! Don't use dark force!
+    </p>
+    <form action="{{ url_for('dartlord') }}" method="post">
         <fieldset>
             <div class="form-group">
                 <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>

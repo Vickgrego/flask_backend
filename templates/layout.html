@@ -10,8 +10,7 @@
 
         <!-- documentation at http://getbootstrap.com/, alternative themes at https://www.bootstrapcdn.com/bootswatch/ -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-
-        <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet"/>
+        <link rel="stylesheet" href="./static/styles.css">
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -27,22 +26,20 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                      <h4>Chrome Dev Tools Skillup</h4>
+                          <a class="btn" href="{{ url_for('index') }}"><h4>Chrome Dev Tools Skillup</h4></a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar">
                         {% if session.user_id %}
                             <ul class="nav navbar-nav">
-                                <li><a href="{{ url_for('quote') }}">Quote</a></li>
-                                <li><a href="{{ url_for('buy') }}">Buy</a></li>
-                                <li><a href="{{ url_for('sell') }}">Sell</a></li>
-                                <li><a href="{{ url_for('history') }}">History</a></li>
+                                {% block nav_menu  %}
+                                {% endblock %}
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                             </ul>
                         {% else %}
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{{ url_for('login') }}">Log In</a></li>
+                                <li><a href="{{ url_for('login') }}">Start a skill up</a></li>
                             </ul>
                         {% endif %}
                     </div>
@@ -58,10 +55,13 @@
             {% endif %}
 
             <main>
+                <p class="validation_error">
+                    {{ error }}
+                </p>
                 {% block main %}{% endblock %}
             </main>
 
-            <footer>
+            <footer class="container-fluid">
                 <p>MobiDeb QA Jedi department</p>
                 {% block footer %}{% endblock %}
             </footer>

@@ -6,7 +6,14 @@
 
 {% block main %}
     <div>
-        <p>Here you are, padawan!<br /> You need use your force and "Elements" tab to get a hidden password and login</p>
+        <h3>First step, kido!</h3>
+        <p class="instruction">
+            1) You need to use your force and "Elements" tab to get a hidden password and login<br/>
+            2) Next you need to click "Login" button! <br/>
+            It's hidden! How to click a hidden button?<br/>
+            In the 'Styles" tab find #login-hidden-button {display: none;}
+            and just deselect it!
+        </p>
     </div>
     <form action="{{ url_for('login') }}" method="post">
         <fieldset>
@@ -17,7 +24,7 @@
                 <input class="form-control" name="password" placeholder="Password" type="password"/>
             </div>
             <div class="form-group">
-                <button class="btn btn-default" type="submit">Log In</button>
+                <button id="login-hidden-button" class="btn btn-default btn-danger" type="submit">Find me for login!</button>
             </div>
         </fieldset>
     </form>

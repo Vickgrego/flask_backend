@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Step 2
+{% endblock %}
+
+{% block nav_menu %}
+    <!--bootstrap popover-->
+    <div class="dropdown">
+        <button class="btn dropbtn">Menu</button>
+        <div class="dropdown-content">
+            <a href="#">Broken link 1</a>
+            <a href="#">Broken link 2</a>
+            <a href="{{ url_for('step3') }}">Click me to reach step 3</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h3>Level one is completed!!</h3>
+        <p class="instruction">
+            To proceed to step 3 you need to learn "Force State" and 'Break on" <br/>
+            Read here <a href="http://blog.teamtreehouse.com/5-great-hidden-features-in-the-chrome-devtools">Force Element State </a><br/>
+            1) Firstly, let's use "Force State". You can see a red black below.<br/>
+            Find
+            2) <br/>
+        </p>
+    </div>
+    <div id="step2_text">
+        Here is some text
+    </div>
+
+{% endblock %}

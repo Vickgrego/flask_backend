@@ -1,40 +1,17 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Portfolio
+    Introduction
 {% endblock %}
 
 {% block main %}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Symbol</th>
-                <th>Name</th>
-                <th>Shares</th>
-                <th>Price</th>
-                <th>TOTAL</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td colspan="4">Total assets</td>
-                <td>${{ assets }}</td>
-            </tr>
-        </tfoot>
-        <tbody>
-            {% for row in rows %}
-                <tr>
-                    <td>{{ row.symbol }}</td>
-                    <td>{{ row.name }}</td>
-                    <td>{{ row.shares }}</td>
-                    <td>{{ row.price }}</td>
-                    <td>{{ row.total }}</td>
-                </tr>
-            {% endfor %}
-            <tr>
-                <td colspan="4">CASH</td>
-                <td>{{ cash }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="instruction">
+        <p>
+            <h4>Here you are, padawan!</h4>
+            You should learn a Chrome DevTools to became a real jedi!<br/>
+            In a case you need a help, try to look here
+            <a href="https://developers.google.com/web/tools/chrome-devtools.">Chrome DevTools</a><br/>
+            Just press the key F12 and start this adventure!
+        </p>
+    </div>
 {% endblock %}
