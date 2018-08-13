@@ -1,7 +1,7 @@
 from tempfile import mkdtemp
 
 from cs50.sql import SQL
-from flask import Flask, redirect, render_template, request, session, url_for
+from flask import Flask, redirect, render_template, request, session, url_for, jsonify
 from flask_basicauth import BasicAuth
 from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
@@ -113,6 +113,13 @@ def step5():
         return render_template("step5.html")
     else:
         return render_template("step5.html")
+
+
+@login_required
+@app.route("/getjson", methods=["GET"])
+def getjson():
+    return jsonify({"param1":"test"})
+
 
 @basic_auth.required
 @app.route("/dartlord", methods=["GET", "POST"])

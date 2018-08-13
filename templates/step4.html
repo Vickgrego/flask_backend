@@ -5,7 +5,13 @@
 {% endblock %}
 
 {% block main %}
-    <p>
-
-    </p>
+        <div class="instruction">
+            <h3>Let's dive into the "Network" tab</h3>
+            To proceed to step 3 you need to learn "Force State" and 'Break on" <br/>
+            Read here <a href="http://blog.teamtreehouse.com/5-great-hidden-features-in-the-chrome-devtools">Force Element State </a><br/>
+            1) First, let's use "Force State". You can see a red black below.<br/>
+            Select the element in "Elements" tab, right mouse click on it and select "Force state"<br/>
+            Then select ":focus" and read an instruction for next step<br/>
+        </div>
+        <button id="api_call" type="button" onclick="getJson()" class="btn btn-warning btn-large">button</button>
 {% endblock %}

@@ -3,7 +3,23 @@
 {% block title %}
     Step 3
 {% endblock %}
+{% block nav_menu %}
+    <li><a class="btn btn-link"  href="{{ url_for('step4') }}">Go to step 4</a></li>
+{% endblock %}
 
 {% block main %}
-
+    <div>
+        <h3>Jedi training is tough, but you can do it!</h3>
+        <p class="instruction">
+            1) Let's go to "Sources" tab and find a "Event Listener Breakpoints"
+            <img class="img-responsive mx-auto d-block image-thumbnail" src="{{ url_for('static', filename='eventlistener.png' ) }}">
+            2) Select "Mouse" and check in "click", click on any element of the web page<br/>
+            3) Now your script is stopped, as it was in previous step. Let's find out why we need such.
+            <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">Read this</a><br/>
+            4) Ok, you are almost a Jedi! Are you ready for the real task? Find what code causes an exception.
+            "Source" tab and breakpoints can help you!<br/>
+            5) To sum up, write a summary to your mentor explaining why we need breakpoints.<br/>
+        </p>
+        <button type="button" class="btn btn-warning btn-large" onclick="causeException()">Danger button</button>
+    </div>
 {% endblock %}

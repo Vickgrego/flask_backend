@@ -11,7 +11,7 @@
         <div class="dropdown-content">
             <a href="#">Broken link 1</a>
             <a href="#">Broken link 2</a>
-            <a href="{{ url_for('step3') }}">Click me to reach step 3</a>
+            <a href="{{ url_for('step3') }}">Go to step 3</a>
         </div>
     </div>
 {% endblock %}
@@ -22,13 +22,37 @@
         <p class="instruction">
             To proceed to step 3 you need to learn "Force State" and 'Break on" <br/>
             Read here <a href="http://blog.teamtreehouse.com/5-great-hidden-features-in-the-chrome-devtools">Force Element State </a><br/>
-            1) Firstly, let's use "Force State". You can see a red black below.<br/>
-            Find
-            2) <br/>
+            1) First, let's use "Force State". You can see a red black below.<br/>
+            Select the element in "Elements" tab, right mouse click on it and select "Force state"<br/>
+            Then select ":focus" and read an instruction for next step<br/>
         </p>
     </div>
-    <div id="step2_text">
-        Here is some text
-    </div>
+    <div class="row">
+        <div id="act2" class="step2_text col-lg-6 col-md-6 col-sm-6">
+            <p>2) Great! Now learn how to use "Break on". Find the element "ul id=itemlist_step2", right click on it
+                and select "Break on", then "subtree modification"<br/>
+                Then click "Continue the order" button. When the script will be stopped, click F8 to continue
+            </p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <button type="button" onclick="addItemToList()" class="btn btn-primary">Continue the order</button>
+                    <script>
 
+                    </script>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <ul id="itemlist_step2" class="list-group">
+                        The correct order is
+                        <li class="list-group-item">IV A New Hope</li>
+                        <li class="list-group-item">V Empires strikes back</li>
+                        <li class="list-group-item">VI Return of the Jedi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p id="Instruction3">
+    </p>
 {% endblock %}

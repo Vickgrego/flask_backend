@@ -62,20 +62,23 @@ footer {
     padding: 10px;
 }
 
-#step2_text {
+.step2_text {
     border: 2px solid red;
-    height: 100px;
+    height: 200px;
     width: 300px;
     background-color: red;
     color: red;
 }
 
-#step2_text:focus {
-    color: black;
+.step2_text:focus {
+    color: white;
+    text-align: left;
+    padding: 15px;
 }
 
-#step2_text:hover {
-    color: white;
+#Instruction3 {
+    text-align: left;
+    padding: 15px;
 }
 
 /* Dropdown Button */
@@ -104,10 +107,14 @@ footer {
     padding: 10px;
     text-decoration: none;
     display: block;
+    text-align: left;
 }
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd;}
 
 /* Show the dropdown menu on hover */
-.dropdown .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+    margin-top: 50px;
+ }
