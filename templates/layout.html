@@ -26,15 +26,10 @@
                           <a class="btn" href="{{ url_for('index') }}"><h4>Chrome Dev Tools Skillup</h4></a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar">
-                        {% if session.user_id %}
                             <ul class="nav navbar-nav">
                                 {% block nav_menu  %}
                                 {% endblock %}
                             </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                            </ul>
-                        {% else %}
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="{{ url_for('login') }}">Start the skill up</a></li>
                             </ul>
