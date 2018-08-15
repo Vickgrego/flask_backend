@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Step 6
+{% endblock %}
+
+{% block main %}
+    <div class="text-center">
+       <img class="img img-rounded" src="{{ url_for('static', filename='sword.jpg' ) }}">
+    </div>
+    <div class="instruction">
+        <div class="well">
+            <h3>We should learn how to control a dark power!</h3>
+        </div>
+        <p>
+            1) Start from the learning how to control speed. Here we have very fast animation.
+            You need to slow it to read a secret lesson
+        </p>
+        <div id="toast">Secret lesson: "star wars"</div>
+        <p>
+            Open 'Animation" tab.
+        </p>
+           <img class="img img-rounded" src="{{ url_for('static', filename='animation.png' ) }}">
+        <p>
+            You can set a speed to 25% or 10%, you can stop an animation or to watch animation frame by frame.
+            <a href="https://developers.google.com/web/tools/chrome-devtools/inspect-styles/animations">Read about animation</a>.
+            You need this feature to find bugs, which can be very fast for your eye to catch.
+        </p>
+        <p>
+            2) We need to learn how to measure the web page performance.
+            <a href="https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/">Read about performance</a>.
+            Open the "Performance monitor" and click "Start heavy operation". Pay attention to the metrics on the Performance monitor.
+        </p>
+        <button type="button" class="btn btn-danger" onclick="heavyLoad()">Start heavy operation</button>
+        <br/><br/>
+        <p>It looks strange, doesn't it?  You need to report a bug to your dev. Open "Performance" and click "Record".
+            Save profile of the record.
+            <br/>
+        </p>
+        <img class="img img-rounded" src="{{ url_for('static', filename='perform_record.png' ) }}">
+        <br/><br/>
+        <p>
+            3) Then go to "Memory" tab and "Take heap snapshot". Save it.
+            <br/>Now you're ready to create a bug for your developer. Attach the memory heap and profile record to the bug report.
+        </p>
+        <p>
+            4) Last, but not the least, "Audits" tab and Lighthouse tool.
+            <a href="https://developers.google.com/web/tools/lighthouse/">Read this about Lighthouse</a>.
+        </p>
+        <img class="img img-rounded" src="{{ url_for('static', filename='audit.png' ) }}">
+        <p>
+            Now, make a test via the Lighthouse and report found issues.
+        </p>
+    </div>
+    <h4 class="instruction">For to go to the last challenge you should write down a secret lesson message.</h4>
+    <form action="{{ url_for('step_performance') }}" method="post">
+        <fieldset class="row">
+            <div class="col-md-6 form-group">
+                <input class="form-control" name="password" placeholder="Secret lesson" type="text"/>
+            </div>
+            <div class="col-md-6 form-group">
+                <button class="btn btn-default btn-info" type="submit">Go to the last challenge</button>
+            </div>
+        </fieldset>
+    </form>
+    <div id="performance_issue"></div>
+{% endblock %}

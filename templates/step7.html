@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Step 7
+{% endblock %}
+
+{% block main %}
+    <div class="text-center">
+       <img class="img img-rounded" src="{{ url_for('static', filename='step7.jpg' ) }}">
+    </div>
+    <div class="instruction">
+        <div class="well">
+            <h3>You are almost at the finish, it's time to learn a dark force technique!</h3>
+        </div>
+        <p>
+            1) Open the Console tab.
+            <a href="https://developers.google.com/web/tools/chrome-devtools/console/events">Read about Console API</a>.
+            <br> Now you should learn how to listen to the disturbance in the power!
+            Sometimes, when you record a video, you need to show to the developer, that you click an item.
+            But how can you print 'click' events in the Console? monitorEvents() function is you help!
+        </p>
+        <p>
+            if monitorEvents() is not enough for you - you can load your own JavaScript to the Console.
+            For example, paste this code:
+        </p>
+        <div class="well small-well">
+        window.addEventListener("click",function(e) {
+            console.log(e.type,  e.target);
+        });
+        </div>
+        <p>
+            Then click on any UI element. You should see a clicked item in the Console.
+        </p>
+        <p>
+            2) Sometimes your page looks ok on all screens, when you test it.
+            But you never know what text would be pushed to the site by your clients next day after you tested it.
+            Read <a href="https://habr.com/company/2gis/blog/246831/">this article</a> about why it's important
+            to use your JS code for testing blogs, news feeds etc. <br/>
+            When ready - copy and paste the code below into the Console.
+        </p>
+        <div class="well small-well">
+            var a,w = document.createTreeWalker(document,NodeFilter.SHOW_TEXT);while(a=w.nextNode()){if(a.textContent.trim().length)a.textContent='Одиннадцатиклассница пошла посмотреть на достопримечательность, она шла долго, несколько строчек, пока не пришла'}
+        </div>
+        <p class="instruction">
+            Congratulations! You've finished this quest. Discuss with your mentor what you learnt from this skill up.
+        </p>
+        <p class="instruction">
+            If you would like to became a jedi master, we invite you to one small advance lesson here
+        </p>
+        <form action="{{ url_for('step_advance') }}" method="get">
+            <fieldset>
+                <div class="form-group">
+                    <button class="btn btn-default btn-success" type="submit">Go to the advance challenge</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

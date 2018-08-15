@@ -4,7 +4,7 @@ body{
     min-height: 90%;
 }
 .navbar {
-    border-radius: 0;
+    border: none;
 }
 
 .navbar {
@@ -19,12 +19,14 @@ body{
     text-align: center;
 }
 
+main {
+    font-size: 16px;
+}
 
 main .form-control
 {
     /* center form controls */
     display: inline-block;
-
     /* override Bootstrap's 100% width for form controls */
     width: auto;
 }
@@ -43,6 +45,8 @@ main td
 
 .instruction{
     text-align: justify;
+    padding: 5px 25px;
+    font-size: 18px;
 }
 
 .validation_error {
@@ -50,24 +54,16 @@ main td
 }
 
 #login-hidden-button {
-    /*display: none;*/
-    display: inline;
-}
-
-footer {
-    margin: 10px 0 0 0;
-    text-align: center;
-    background-color: #e5e5e5;
-    color: #0f0f0f;
-    padding: 10px;
+    display: none;
 }
 
 .step2_text {
     border: 2px solid red;
     height: 200px;
-    width: 300px;
+    width: 400px;
     background-color: red;
     color: red;
+    font-size: 17px;
 }
 
 .step2_text:focus {
@@ -118,3 +114,50 @@ footer {
     display: block;
     margin-top: 50px;
  }
+
+ #broken_css {
+    min-width:800px;
+ }
+
+ @media only screen and (width: 1366px) {
+    body {
+        background-color: red;
+    }
+ }
+
+.dark_code {
+    font-size: 20px;
+    background-color: black;
+    color: yellow;
+}
+
+#toast {
+    width: 250px;
+    height: 75px;
+    background-color: gray;
+    color: white;
+    font-side: 15px;
+    position: relative;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {left:0px; top:0px;}
+    25%  {left:500px; top:0px;}
+    50%  {left:50px; top:0px;}
+    75%  {left:300px; top:0px;}
+    100% {left:0px; top:0px;}
+}
+
+ footer {
+    margin: 10px 0 0 0;
+    text-align: center;
+    background-color: #cfcfcf;
+    color: #0f0f0f;
+    padding: 10px;
+}

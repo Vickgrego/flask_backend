@@ -88,9 +88,9 @@ def step2():
         return render_template("step2.html")
 
 @basic_auth.required
-@app.route("/step3", methods=["GET", "POST"])
+@app.route("/step_breakpoints", methods=["GET", "POST"])
 @login_required
-def step3():
+def step_breakpoints():
     if request.method == "POST":
         return render_template("step3.html")
     else:
@@ -101,24 +101,65 @@ def step3():
 @login_required
 def step4():
     if request.method == "POST":
-        return render_template("step4.html")
+        if not request.form.get("password"):
+            return render_template("step4.html", error=ERROR.format("Empty secret code"))
+        secret_code = str(request.form.get("password"))
+        if secret_code != "jedi":
+            return render_template("step4.html", error=ERROR.format("Incorrect secret code"))
+        elif secret_code == "jedi":
+            return redirect(url_for("step_screencast"))
     else:
         return render_template("step4.html")
 
 @basic_auth.required
-@app.route("/step5", methods=["GET", "POST"])
+@app.route("/step_screencast", methods=["GET", "POST"])
 @login_required
-def step5():
+def step_screencast():
     if request.method == "POST":
-        return render_template("step5.html")
+        if not request.form.get("password"):
+            return render_template("step5.html", error=ERROR.format("Empty dark code"))
+        secret_code = str(request.form.get("password"))
+        if secret_code != "sith":
+            return render_template("step5.html", error=ERROR.format("Incorrect dark code"))
+        elif secret_code == "sith":
+            return redirect(url_for("step_performance"))
     else:
         return render_template("step5.html")
 
+@basic_auth.required
+@app.route("/step_performance", methods=["GET", "POST"])
+@login_required
+def step_performance():
+    if request.method == "POST":
+        if not request.form.get("password"):
+            return render_template("step6.html", error=ERROR.format("Empty secret lesson"))
+        secret_code = str(request.form.get("password"))
+        if secret_code != "star wars":
+            return render_template("step6.html", error=ERROR.format("Incorrect secret lesson"))
+        elif secret_code == "star wars":
+            return redirect(url_for("step_console"))
+
+    if request.method == "GET":
+        return render_template("step6.html")
+
+@basic_auth.required
+@app.route("/step_console", methods=["GET"])
+@login_required
+def step_console():
+    if request.method == "GET":
+        return render_template("step7.html")
+
+@basic_auth.required
+@app.route("/step_advance", methods=["GET"])
+@login_required
+def step_advance():
+    if request.method == "GET":
+        return render_template("step_advance.html")
 
 @login_required
 @app.route("/getjson", methods=["GET"])
 def getjson():
-    return jsonify({"param1":"test"})
+    return jsonify({"secretCode":"jedi", "bugMessage":"This should not be here!"})
 
 
 @basic_auth.required

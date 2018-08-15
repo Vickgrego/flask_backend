@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    This is advance step!
+{% endblock %}
+
+{% block main %}
+    <div class="text-center">
+       <img class="img img-rounded" src="{{ url_for('static', filename='advance.jpg' ) }}">
+    </div>
+    <div class="instruction">
+        <div class="well">
+            <h3>No simulation! Everything should be as real as possible!</h3>
+        </div>
+    </div>
+     <p class="instruction">
+        Yeah! You've learnt previously how to simulate a screen resolution.
+        But the problem here, that it's just simulationng.
+        You never know how a web page behaves on the real device.
+        <br/> <br/>
+        Thankfully, Chrome has an answer for us, we can check our website on the real Android device.
+        Follow this instruction
+        <a href="https://groups.google.com/forum/#!msg/gtpvkr/W7tTQDqgTXk/8Wm9nzueBAAJ">Remote Debugging on Android Devices</a>.
+        Now you're ready to inspect this web page on the real Android device.
+        <br/><br/>
+        Here is the tough task! Sometimes, you have no remote server to test a web app
+        and you're forced to run a dev site on the localhost. Read this article
+        <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/local-server"> Access Local Server.</a>
+        Now, load the archive  from here <a href="https://drive.google.com/open?id=1iIPYT9v72lnEsJYP4UPOEttw0_rLO3P6">Archive</a>
+        , make sure you have node.js installed on your machine.
+        Extract an archive and go to the frontent directory.
+        From this directory run commands in your command line.
+     </p>
+        <div class="well small-well instruction">
+            <code>npm i</code><br/>
+            <code>npm start</code>
+        </div>
+     <p class="instruction">
+         After the server starts, go to <mark>localhost:4200</mark>. Now, access this localhost on your Android device.
+        It's not hard, just select "Port forwarding" and "Add Rule" "4200: localhost:4200" as on the image below.
+     </p>
+        <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='add_port.png' ) }}">
+    <p class="instruction">
+        <br/>Now, if you've done with the Access Local Server.
+    </p>
+{% endblock %}

@@ -6,32 +6,38 @@
 
 {% block nav_menu %}
     <!--bootstrap popover-->
-    <div class="dropdown">
-        <button class="btn dropbtn">Menu</button>
-        <div class="dropdown-content">
-            <a href="#">Broken link 1</a>
-            <a href="#">Broken link 2</a>
-            <a href="{{ url_for('step3') }}">Go to step 3</a>
+    <li>
+        <div class="dropdown">
+            <button class="btn btn-link dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="#">Broken link 1</a>
+                <a href="#">Broken link 2</a>
+                <a href="{{ url_for('step_breakpoints') }}">Go to the challenge 3</a>
+            </div>
         </div>
-    </div>
+    </li>
 {% endblock %}
 
 {% block main %}
+    <div class="text-center">
+       <img class="img img-rounded" src="{{ url_for('static', filename='step2.jpg' ) }}">
+    </div>
     <div>
         <h3>Level one is completed!!</h3>
         <p class="instruction">
-            To proceed to step 3 you need to learn "Force State" and 'Break on" <br/>
+            To proceed to the challenge 3 you need to learn "Force State" and 'Break on" <br/>
             Read here <a href="http://blog.teamtreehouse.com/5-great-hidden-features-in-the-chrome-devtools">Force Element State </a><br/>
-            1) First, let's use "Force State". You can see a red black below.<br/>
-            Select the element in "Elements" tab, right mouse click on it and select "Force state"<br/>
-            Then select ":focus" and read an instruction for next step<br/>
+            <br/>
+            1) First, let's use "Force State". Do you see a red block below?<br/>
+            Select this block in "Elements" tab, right mouse click on it and select "Force state"<br/>
+            Then select ":focus" and read an instruction for the next step<br/>
         </p>
     </div>
     <div class="row">
         <div id="act2" class="step2_text col-lg-6 col-md-6 col-sm-6">
             <p>2) Great! Now learn how to use "Break on". Find the element "ul id=itemlist_step2", right click on it
-                and select "Break on", then "subtree modification"<br/>
-                Then click "Continue the order" button. When the script will be stopped, click F8 to continue
+                and <bold>select "Break on", then "subtree modification"</bold><br/>
+                Then click "Continue the order" button. If you've done it right the script stops, click F8 to continue.
             </p>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6">

@@ -5,5 +5,75 @@
 {% endblock %}
 
 {% block main %}
+    <div class="text-center">
+       <img class="img img-rounded" src="{{ url_for('static', filename='sw_dance.gif' ) }}">
+    </div>
+    <div class="instruction">
+        <div class="well">
+            <h3>It's time to go mobile!</h3>
+        </div>
+        <div class="jumbotron">
+            <p>The page looks pretty, aren't it? Ok, at least, it's not broken. But wait, what about the same page on the mobile devices?</p>
+            <p>At first read this
+                <a href="https://confluence.mobidev.biz/display/MDRQ/Correct+simulation+of+the+mobile+device+with+Google+Dev.+Tools">Simulation of the mobile with Chrome Dev Tools</a></p>
+        </div>
+        <div id="broken_css">
+            <p>
+                1) Find all bugs associated with different devices screens. Go to
+                <a href="http://gs.statcounter.com/screen-resolution-stats">browser statistic </a>
+                and check the most popular resolutions in the USA. Then, adapt Chrome to each this resolution, find all bugs,
+                document them to the Google Docs.
+            </p>
+        </div>
+            <p>
+                2) Our client has a new phone, it's called Xiaomi Mi A2. Let's test if this web page would be pretty on his phone.
+                Cannot find this phone in Responsive drop-down? Create a new device!
+            </p>
+            <p>
+                Pay attention to selecting a proper 'User agent' - it's very important for correct device simulation!
+            </p>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-11 col-sm-11">
+            <div class="thumbnail">
+                <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='edit.png' ) }}">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-1 col-sm-1">
+            <div class="thumbnail">
+                <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='custom.png' ) }}">
+            </div>
+        </div>
+    </div>
+    <div class="instruction">
+        <p>
+            Similar, you can change a user agent from the "Network condition" tab.
+        </p>
+            <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='usr_agent.png' ) }}">
+        <br/>
+        You've learnt how to simulate a screen resolution.
+        <br/>
+        But Chrome can even more! We can check our website on the real Android device. Follow this instruction
+        <a href="https://groups.google.com/forum/#!msg/gtpvkr/W7tTQDqgTXk/8Wm9nzueBAAJ">Remote Debugging on Android Devices</a>.
+        <br/>
+        Now you're ready to inspect this web page on the real Android device.
+        <br/><br/>
+    </div>
+    <p style="color: red">Here should be a dark code if you used an Android device or simulated it correctly.
+    <h3 id="android_holder"></h3>
+    <p class="instruction">
+        If you tried to simulate Android device with Android user agent or to open a site on the real Android,
+        you could see a dark code. You need this to move to the next step.
+    </p>
+    <form action="{{ url_for('step_screencast') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input class="form-control" name="password" placeholder="Dark code" type="text"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default btn-info" type="submit">Go to the next challenge</button>
+            </div>
+        </fieldset>
+    </form>
 
 {% endblock %}

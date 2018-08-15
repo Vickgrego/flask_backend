@@ -5,13 +5,73 @@
 {% endblock %}
 
 {% block main %}
+        <div class="text-center">
+            <img class="img img-rounded" src="{{ url_for('static', filename='step4.jpg' ) }}">
+        </div>
         <div class="instruction">
             <h3>Let's dive into the "Network" tab</h3>
-            To proceed to step 3 you need to learn "Force State" and 'Break on" <br/>
-            Read here <a href="http://blog.teamtreehouse.com/5-great-hidden-features-in-the-chrome-devtools">Force Element State </a><br/>
-            1) First, let's use "Force State". You can see a red black below.<br/>
-            Select the element in "Elements" tab, right mouse click on it and select "Force state"<br/>
-            Then select ":focus" and read an instruction for next step<br/>
+            Start your training here
+            <a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/reference">About Network</a><br/>
+            Yeah, we know, too much text. We hope you've read this article. Let's find out!<br/>
+            <br/>
+            1) Click "GET API response" button (we hope "Network" tab is already opened).
+            Did you notice new api call "getjson" appeared in the "Name" section?
+            Click on the api call and find a secret code in the server response.<br/>
         </div>
-        <button id="api_call" type="button" onclick="getJson()" class="btn btn-warning btn-large">button</button>
+        <button id="api_call" type="button" onclick="getJson()" class="btn btn-success btn-large">GET API response</button>
+        <div class="instruction">
+            <p>
+                2) Is it any bug message in the response? Let's create a bug report (Google Docs is enough for a bug)!
+                Write down steps to reproduce a bug and then copy a request as cURL format into the bug report<br/>
+                <img class="img-responsive mx-auto d-block image-thumbnail" src="{{ url_for('static', filename='curl.png' ) }}">
+                What is cURL? <a href="https://www.rosehosting.com/blog/what-is-curl/">About cURL.</a>
+                Have you read it? Explain to your mentor why do think it's a good practice to copy cURL into a bug report?<br/>
+                BTW, if you use Postman, you can easily copy request as cURL from Chrome and paste it into Postman.<br/>
+                <br/>
+                3) Now, right click on any request in the Name section and select "save as HAR with content".
+                <img class="img-responsive mx-auto d-block image-thumbnail" src="{{ url_for('static', filename='har.png' ) }}">
+                <br/>Go to <a href="https://ericduran.github.io/chromeHAR/">this website</a> and load a har file.<br/>
+                What is HAR and why we need this? HAR is basically a copy of all your requests. When you report a bug,
+                sometimes, when it's not unclear what API call caused a bug, it's better to provide to a developer a har file,
+                so the developer can analyze all you network activity.
+                <br/><br/>
+                3) Let's find out how our site works with slow internet. Open a "Network conditions" tab and select 'Slow 3G".
+            </p>
+          <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="thumbnail">
+                        <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='netw_cond.png' ) }}">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="thumbnail">
+                        <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='slow3g.png' ) }}">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="thumbnail">
+                       <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='scr.png' ) }}">
+                    </div>
+                </div>
+            </div>
+            <p>
+                Make sure "Capture screenshots" is enabled. Click 'F5" and wait until the page has been loaded.<br/>
+                If everything has been done correctly, you can see a bunch of screenshots in the Network tab. Double click on it
+                and inspect how our wep page has been loaded under slow 3G.
+                <br/>
+                What do you think? Why it's useful to test under slow 3G connection? Explain to your mentor.
+                <br/><br/>
+                4) Do you remember a secret code from response JSON? You need it to go to the next step
+            </p>
+        </div>
+        <form action="{{ url_for('step4') }}" method="post">
+            <fieldset>
+                <div class="form-group">
+                    <input class="form-control" name="password" placeholder="Secret code" type="password"/>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default btn-info" type="submit">Go to step 5</button>
+                </div>
+            </fieldset>
+        </form>
 {% endblock %}
