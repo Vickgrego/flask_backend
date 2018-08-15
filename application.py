@@ -1,5 +1,5 @@
 from tempfile import mkdtemp
-
+import os
 from cs50.sql import SQL
 from flask import Flask, redirect, render_template, request, session, url_for, jsonify
 from flask_basicauth import BasicAuth
@@ -193,5 +193,6 @@ def dartlord():
 
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(port=port)
 
