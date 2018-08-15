@@ -1,10 +1,12 @@
 from tempfile import mkdtemp
 import os
-from flask import Flask, request, url_for, jsonify
+from cs50.sql import SQL
+from flask import Flask, redirect, render_template, request, session, url_for, jsonify
 from flask_basicauth import BasicAuth
 from flask_session import Session
+from passlib.apps import custom_app_context as pwd_context
+from passlib.context import CryptContext
 
-import credentials
 from helpers import *
 
 
@@ -17,8 +19,8 @@ app = Flask(__name__)
 app.jinja_env.filters["usd"] = usd
 
 # config BasicAuth
-app.config["BASIC_AUTH_USERNAME"] = credentials.basic_auth_name
-app.config["BASIC_AUTH_PASSWORD"] = credentials.basic_auth_pass
+app.config["BASIC_AUTH_USERNAME"] = "IamQA"
+app.config["BASIC_AUTH_PASSWORD"] = "QAPower"
 basic_auth = BasicAuth(app)
 
 # configure session to use filesystem (instead of signed cookies)
@@ -26,6 +28,9 @@ app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+# configure CS50 Library to use SQLite database
+# db = SQL("sqlite:///finance.db")
 
 @app.route("/")
 @basic_auth.required
@@ -44,11 +49,15 @@ def login():
         # ensure password was submitted
         elif not request.form.get("password"):
             return render_template("login.html", error=ERROR.format("Empty password"))
-        _login = str(request.form.get("username"))
-        _pasw = str(request.form.get("password"))
-        if _login != credentials.login or _pasw != credentials.passw:
-            return render_template("login.html", error=ERROR.format("Credentials incorrect"))
-        session["user_id"] = "01{}{}".format(_login, _pasw)
+
+        login = request.form.get("username")
+        pasw = request.form.get("password")
+
+        rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
+        if len(rows) != 1 or not pwd_context.verify(request.form.get("password"), rows[0]["hash"]):
+            return render_template("login.html", error=ERROR.format("Not valid credentials"))
+
+        session["user_id"] = rows[0]["id"]
         return redirect(url_for("step2"))
     else:
         return render_template("login.html")
@@ -87,9 +96,9 @@ def step4():
         if not request.form.get("password"):
             return render_template("step4.html", error=ERROR.format("Empty secret code"))
         secret_code = str(request.form.get("password"))
-        if secret_code != credentials.secret_code:
+        if secret_code != "jedi":
             return render_template("step4.html", error=ERROR.format("Incorrect secret code"))
-        elif secret_code == credentials.secret_code:
+        elif secret_code == "jedi":
             return redirect(url_for("step_screencast"))
     else:
         return render_template("step4.html")
@@ -101,10 +110,10 @@ def step_screencast():
     if request.method == "POST":
         if not request.form.get("password"):
             return render_template("step5.html", error=ERROR.format("Empty dark code"))
-        code = str(request.form.get("password"))
-        if code != credentials.dark_code:
+        secret_code = str(request.form.get("password"))
+        if secret_code != "sith":
             return render_template("step5.html", error=ERROR.format("Incorrect dark code"))
-        elif code == credentials.dark_code:
+        elif secret_code == "sith":
             return redirect(url_for("step_performance"))
     else:
         return render_template("step5.html")
@@ -117,9 +126,9 @@ def step_performance():
         if not request.form.get("password"):
             return render_template("step6.html", error=ERROR.format("Empty secret lesson"))
         secret_code = str(request.form.get("password"))
-        if secret_code != credentials.performance_code:
+        if secret_code != "star wars":
             return render_template("step6.html", error=ERROR.format("Incorrect secret lesson"))
-        elif secret_code == credentials.performance_code:
+        elif secret_code == "star wars":
             return redirect(url_for("step_console"))
 
     if request.method == "GET":
@@ -143,6 +152,36 @@ def step_advance():
 @app.route("/getjson", methods=["GET"])
 def getjson():
     return jsonify({"secretCode":"jedi", "bugMessage":"This should not be here!"})
+
+
+@basic_auth.required
+@app.route("/dartlord", methods=["GET", "POST"])
+def dartlord():
+    session.clear()
+    if request.method == "POST":
+        if not request.form.get("username"):
+            return render_template("dartlord.html", error=ERROR.format("Username is empty"))
+        elif not request.form.get("password"):
+            return render_template("dartlord.html", error=ERROR.format("Password is empty"))
+        elif not request.form.get("confirm_pass"):
+            return render_template("dartlord.html", error=ERROR.format("Confirm is empty"))
+
+        log_in = request.form.get("username")
+        password = request.form.get("password")
+        confirm_pass = request.form.get("confirm_pass")
+        if password != confirm_pass:
+            return render_template("dartlord.html", error=ERROR.format("password doesn't match confirm password"))
+        #hashing pass
+        scheme_for_hash = CryptContext(schemes=["sha256_crypt"], sha256_crypt__default_rounds=77000)
+        hash_of_pass = scheme_for_hash.hash(password)
+        # insert into database new username
+        # rows = db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)", username=log_in, hash=hash_of_pass)
+        # if rows is None:
+        #     return apology("Such user is already registered", 409)
+
+        return redirect(url_for("index"))
+    else:
+        return render_template("dartlord.html")
 
 
 if __name__ == "__main__":

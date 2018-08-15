@@ -18,11 +18,6 @@
         But the problem here, that it's just simulationng.
         You never know how a web page behaves on the real device.
         <br/> <br/>
-        Thankfully, Chrome has an answer for us, we can check our website on the real Android device.
-        Follow this instruction
-        <a href="https://groups.google.com/forum/#!msg/gtpvkr/W7tTQDqgTXk/8Wm9nzueBAAJ">Remote Debugging on Android Devices</a>.
-        Now you're ready to inspect this web page on the real Android device.
-        <br/><br/>
         Here is the tough task! Sometimes, you have no remote server to test a web app
         and you're forced to run a dev site on the localhost. Read this article
         <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/local-server"> Access Local Server.</a>
@@ -36,11 +31,13 @@
             <code>npm start</code>
         </div>
      <p class="instruction">
-         After the server starts, go to <mark>localhost:4200</mark>. Now, access this localhost on your Android device.
+        After the server starts, go to <mark>localhost:4200</mark>. Now, access this localhost on your Android device.
         It's not hard, just select "Port forwarding" and "Add Rule" "4200: localhost:4200" as on the image below.
      </p>
         <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='add_port.png' ) }}">
     <p class="instruction">
-        <br/>Now, if you've done with the Access Local Server.
+        <br/>Now you can start you testing even before the real backend would be deployed!<br/>
+        We have no additional tasks for you! You're ready to join dark force! You thought it's jedi training? No way!
+        There is only dark power what can help you to find all bugs!
     </p>
 {% endblock %}
