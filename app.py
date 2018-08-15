@@ -63,7 +63,6 @@ def logout():
 
 @basic_auth.required
 @app.route("/step2", methods=["GET", "POST"])
-@login_required
 def step2():
     if request.method == "POST":
         return render_template("step2.html")
@@ -72,7 +71,6 @@ def step2():
 
 @basic_auth.required
 @app.route("/step_breakpoints", methods=["GET", "POST"])
-@login_required
 def step_breakpoints():
     if request.method == "POST":
         return render_template("step3.html")
@@ -81,7 +79,6 @@ def step_breakpoints():
 
 @basic_auth.required
 @app.route("/step4", methods=["GET", "POST"])
-@login_required
 def step4():
     if request.method == "POST":
         if not request.form.get("password"):
@@ -96,7 +93,6 @@ def step4():
 
 @basic_auth.required
 @app.route("/step_screencast", methods=["GET", "POST"])
-@login_required
 def step_screencast():
     if request.method == "POST":
         if not request.form.get("password"):
@@ -111,7 +107,6 @@ def step_screencast():
 
 @basic_auth.required
 @app.route("/step_performance", methods=["GET", "POST"])
-@login_required
 def step_performance():
     if request.method == "POST":
         if not request.form.get("password"):
@@ -127,25 +122,20 @@ def step_performance():
 
 @basic_auth.required
 @app.route("/step_console", methods=["GET"])
-@login_required
 def step_console():
     if request.method == "GET":
         return render_template("step7.html")
 
 @basic_auth.required
 @app.route("/step_advance", methods=["GET"])
-@login_required
 def step_advance():
     if request.method == "GET":
         return render_template("step_advance.html")
 
-@login_required
 @app.route("/getjson", methods=["GET"])
 def getjson():
     return jsonify({"secretCode":"jedi", "bugMessage":"This should not be here!"})
 
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run()
-
