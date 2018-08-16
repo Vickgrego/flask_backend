@@ -3,6 +3,9 @@
 {% block title %}
     Introduction
 {% endblock %}
+{% block nav_menu  %}
+    <li><a href="{{ url_for('login') }}">Go to login</a></li>
+{% endblock %}
 
 {% block main %}
     <div class="text-center">
@@ -14,7 +17,7 @@
             You should learn a Chrome DevTools to became a real jedi!<br/>
             In a case you need a help, try to look here
             <a href="https://developers.google.com/web/tools/chrome-devtools">Chrome DevTools</a><br/>
-            Just press the key F12 and start this adventure by clicking "Star the skill up"
+            Just press the key F12 and start this adventure by clicking "Star the skill up" in the Menu.
         </p>
     </div>
 {% endblock %}

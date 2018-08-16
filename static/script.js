@@ -57,7 +57,22 @@ $( document ).ready(()=>{
             console.log("no android");
         }
     } catch (error) {
-        console.log(error);
+        console.log("");
+    }
+
+    try {
+        var list = document.getElementsByClassName("login_password");
+        [].forEach.call(list, (l)=>{
+            l.addEventListener("keydown", (e)=>{
+                var key = e.keyCode;
+                if (key == 13) {
+                    e.preventDefault();
+                }
+            })
+        })
+
+    } catch (error) {
+        console.log("");
     }
 });
 
