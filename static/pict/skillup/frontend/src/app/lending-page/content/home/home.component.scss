@@ -1,0 +1,109 @@
+@import '../../../../assets/scss/variables';
+
+.welcome-carousel {
+  $height-box: 225px;
+
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column-reverse;
+  color: #fff;
+  position: relative;
+
+  @media (min-width: $point-md) {
+    flex-flow: row;
+  }
+  @media (min-width: $point-lg) {
+   height: 350px;
+  }
+  @media (min-width: $point-xl) {
+    height: 520px;
+  }
+
+  .welcome {
+    min-height: $height-box;
+    display: flex;
+    align-items: center;
+    background: url("../../../../assets/images/waves.jpg") center / cover no-repeat;
+
+    @media (min-width: $point-md) {
+      width: 47%;
+    }
+    @media (min-width: $point-lg) {
+      height: auto;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (min-width: $point-lg) {
+      padding: 25px;
+    }
+    @media (min-width: $point-xl) {
+      width: 36%;
+      padding-right: 4%;
+    }
+
+    .welcome-content {
+      padding: 24px 20px;
+      line-height: 1.3;
+      font-size: 1.1rem;
+
+      @media (min-width: $point-lg) {
+        font-size: 1.14rem;
+        padding: 25px;
+        width: 95%;
+      }
+      @media (min-width: $point-xl) {
+        padding: 30px 8%;
+        background: rgba(0,0,0,0.3);
+        max-width: 470px;
+        margin-bottom: 10px;
+      }
+      @media (min-width: 1700px) {
+        padding: 30px 48px;
+      }
+
+      h1 {
+        font: 900 1.5rem/1.6 $font-futura-hv;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+
+        span {
+          display: block;
+          font: italic 300 0.9rem/1.2 $font-futura-bk-it;
+        }
+
+        @media (min-width: $point-lg) {
+          font-size: 1.43rem;
+          margin-bottom: 18px;
+
+          span {
+            font-size: 1.14rem;
+          }
+        }
+        @media (min-width: $point-xl) {
+          font-size: 1.8rem;
+
+          span {
+            letter-spacing: 0;
+          }
+        }
+      }
+
+      p {
+        margin-bottom: 7px;
+      }
+    }
+  }
+
+  .carousel-holder {
+    flex: 1 0 auto;
+    height: $height-box;
+    position: relative;
+
+    @media (min-width: $point-md) {
+      height: auto;
+    }
+  }
+}

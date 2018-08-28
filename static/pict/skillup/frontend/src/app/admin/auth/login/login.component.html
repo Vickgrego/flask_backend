@@ -1,0 +1,29 @@
+<div>
+  <div class="error-message" >
+    <span>{{ errorMessage }}</span>
+  </div>
+  <form [formGroup]="form" (submit)="login()" >
+    <div class="form-control-container" >
+      <div class="form-control" >
+        <label for="auth-user-name" >User Name</label>
+        <input type="text" id="auth-user-name" formControlName="userName" placeholder="Enter User Name" >
+      </div>
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.userName" ></app-validation-message>
+    </div>
+
+    <div class="form-control-container" >
+      <div class="form-control" >
+        <label for="auth-password" >Password</label>
+        <input id="auth-password" type="password" formControlName="password" placeholder="Enter Password" >
+      </div>
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.password" ></app-validation-message>
+    </div>
+
+    <div class="form-buttons-contaner">
+      <button type="submit" class="btn-success">Login</button>
+    </div>
+  </form>
+  <div>
+    <a routerLink="/auth/reset-password" ><i>Forgot Password</i></a>
+  </div>
+</div>

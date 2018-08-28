@@ -1,0 +1,128 @@
+.form-control {
+  .files-list {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  a {
+    cursor: pointer;
+  }
+  select#thumbnails {
+    display: block;
+    vertical-align: top;
+    margin: 3px;
+  }
+}
+
+.file-name {
+  display: block;
+}
+
+.tags-block {
+  margin-left: 203px;
+  margin-top: -40px;
+  border: 1px solid;
+  padding: 10px 30px;
+
+  .scroll-container{
+    overflow-y: scroll;
+    height: 150px;
+    padding: 10px;
+  }
+
+  label {
+    height: auto;
+    text-align: left !important;
+  }
+
+  #search{
+    width: calc(100% - 205px);
+  }
+
+  .tag-item {
+    margin-left: 200px;
+
+    label {
+      text-align: left;
+      padding: 0 15px !important;
+    }
+
+    input[type=checkbox] {
+      margin: 0 !important;
+    }
+  }
+}
+
+.form-control-container label {
+  width: 200px !important;
+  vertical-align: top;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile-label {
+  font-size: 1.25em;
+  font-weight: 700;
+  text-align: center !important;
+  color: black;
+  background-color: lightgrey;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.inputfile-label:focus,
+.inputfile-label:hover {
+  background-color: darkgray;
+}
+
+.inputfile-label:focus {
+  outline: 1px dotted lightgrey;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile-label * {
+  pointer-events: none;
+}
+
+.inline {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.asset-content {
+  border: 1px solid #c1c5c9;
+  padding: 7px;
+  margin-bottom: 15px;
+  width: 330px;
+  display: inline-block;
+  text-align: center;
+
+  .asset-content-file {
+    padding-top: 69%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    background: #D8D8D8;
+  }
+
+  .asset-file {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  img  {
+    width: 100%;
+    height: auto;
+  }
+}

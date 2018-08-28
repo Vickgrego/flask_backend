@@ -6,16 +6,18 @@
 
 {% block main %}
     <div class="text-center">
-       <img class="img img-rounded" src="{{ url_for('static', filename='sw_dance.gif' ) }}">
+       <img class="img img-rounded" src="{{ url_for('static', filename='pict/sw_mobile.jpg' ) }}">
+    </div>
+    <div class="well">
+        <h3>It's time to go mobile!</h3>
     </div>
     <div class="instruction">
-        <div class="well">
-            <h3>It's time to go mobile!</h3>
-        </div>
         <div class="jumbotron">
             <p>The page looks pretty, aren't it? Ok, at least, it's not broken. But wait, what about the same page on the mobile devices?</p>
-            <p>At first read this
-                <a href="https://confluence.mobidev.biz/display/MDRQ/Correct+simulation+of+the+mobile+device+with+Google+Dev.+Tools">Simulation of the mobile with Chrome Dev Tools</a></p>
+            <p>At first learn how to simulate a mobile device
+                <a href="https://confluence.mobidev.biz/display/MDRQ/Correct+simulation+of+the+mobile+device+with+Google+Dev.+Tools">simulation of the mobile with Chrome Dev Tools</a></p>
+            Answer the questions: how to toggle device toolbar, how to switch between different devices,
+            how to create a new device, what is a user agent and how to change it?
         </div>
         <div id="broken_css">
             <p>
@@ -25,23 +27,29 @@
                 document them to the Google Docs.
             </p>
         </div>
-            <p>
-                2) Our client has a new phone, it's called Xiaomi Mi A2. Let's test if this web page would be pretty on his phone.
-                Cannot find this phone in Responsive drop-down? Create a new device!
-            </p>
-            <p>
-                Pay attention to selecting a proper 'User agent' - it's very important for correct device simulation!
-            </p>
+        <div class="breadcrumb">
+            "F12" key --> 'Toggle device toolbar" (CTRL + SHIFT + M)
+        </div>
+        <p>
+            2) Our client has a new phone, it's called Xiaomi Mi A2. Let's test if this web page would be pretty on his phone.
+            There are no such phone in Responsive drop-down. Create a new device!
+        </p>
+        <div class="breadcrumb">
+            "F12" key --> 'Toggle device toolbar" (CTRL + SHIFT + M) --> Devices drop-down --> "Edit" --> "Add custom device"
+        </div>
+        <p>
+            Pay attention to selecting a proper 'User agent' - it's very important for correct device simulation!
+        </p>
     </div>
     <div class="row">
         <div class="col-lg-6 col-md-11 col-sm-11">
             <div class="thumbnail">
-                <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='edit.png' ) }}">
+                <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='pict/edit.png' ) }}">
             </div>
         </div>
         <div class="col-lg-6 col-md-1 col-sm-1">
             <div class="thumbnail">
-                <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='custom.png' ) }}">
+                <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='pict/custom.png' ) }}">
             </div>
         </div>
     </div>
@@ -50,7 +58,10 @@
             Similar, you can change a user agent from the "Network condition" tab.
             Don't forget to reload the page after you change a user agent.
         </p>
-            <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='usr_agent.png' ) }}">
+        <div class="breadcrumb">
+            "F12" key --> &#8942; --> More tools --> Network conditions --> User agent
+        </div>
+        <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='pict/usr_agent.png' ) }}">
         <br/>
         You've learnt how to simulate a screen resolution.
         <br/>
@@ -58,7 +69,12 @@
         Follow this instruction to open this web page on the real Android device -
         <a href="https://groups.google.com/forum/#!msg/gtpvkr/W7tTQDqgTXk/8Wm9nzueBAAJ"> remote Debugging on Android Devices</a>.
         <br/>
-        Now you're ready to inspect this web page on the real Android device, show it yo your mentor.
+        Connect a real android device and inspect this page on it.
+        <div class="breadcrumb">
+            "F12" key --> &#8942; --> More tools --> Remote device --> Connected --> Inspect "Chrome dev tools..." page
+        </div>
+        <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='pict/remote.png' ) }}">
+        Now you're ready to inspect this web page on the real Android device, show it your mentor.
         <br/><br/>
     </div>
     <p style="color: red">Here should be a dark code if you used an Android device or simulated it correctly.

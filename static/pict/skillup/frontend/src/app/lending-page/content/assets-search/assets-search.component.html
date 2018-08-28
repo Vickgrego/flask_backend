@@ -1,0 +1,9 @@
+<app-assets [assets]="assets" class="search-results">
+  <p class="breadcrumbs">
+    <span *ngIf="!assets.length">No</span>
+    results for &laquo;{{ searchString }}&raquo;
+    <span *ngIf="assets.length" class="results-length">({{ assets.length }} results)</span>
+  </p>
+  <app-icon *ngIf="!assets.length" class="icon-binocular" [iconName]="'binocular'" [iconWidth]="200" [iconHeight]="170"></app-icon>
+  <p *ngIf="!assets.length" class="text-bottom">Try searching for other keywords.</p>
+</app-assets>

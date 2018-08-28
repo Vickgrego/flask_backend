@@ -1,0 +1,59 @@
+.form-control {
+  a {
+    cursor: pointer;
+  }
+}
+
+.file-name {
+  display: block;
+}
+
+.tags-block {
+  margin-left: 150px;
+  margin-top: -30px;
+  border: 1px solid;
+  padding: 10px 30px;
+
+  .scroll-container{
+    overflow-y: scroll;
+    height: 150px;
+    padding: 5px;
+  }
+
+  label {
+    height: auto;
+  }
+
+  .tag-item label {
+    text-align: left;
+    padding: 0 15px;
+  }
+}
+
+h2 {
+  padding: 15px;
+}
+.top-right {
+  float: right;
+  padding: 15px;
+  margin: -45px 15px;
+}
+.filters .form-control{
+  display: inline-block;
+
+  label {
+    width: 94px !important;
+    padding: .6em .2em !important;
+  }
+  label.small {
+    width: 84px !important;
+  }
+  label.smaller {
+    width: 69px !important;
+  }
+
+  select {
+    width: 64px !important;
+    min-width: 64px !important;
+  }
+}

@@ -49,6 +49,11 @@ main td
     font-size: 18px;
 }
 
+.breadcrumb{
+    color: #6778aa;
+    text-align: left !important;
+}
+
 .validation_error {
     color: #cc0000;
 }

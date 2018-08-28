@@ -1,0 +1,29 @@
+<div style="overflow: hidden">
+
+  <div class="admin-content-left-panel" >
+    <div class="nav-block">
+      <span>Navigation</span>
+      <a routerLink="/admin/navigation/add" ><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </div>
+
+    <tree-root [nodes]="navItems"
+               [options]="options"
+               (activate)="onChangeActiveNode($event)" >
+      <ng-template #treeNodeTemplate let-node let-index="index">
+        <div class="nav-block">
+          <span [ngClass]="{'inactive-item': !node.data.isActive}">{{ node.data.name }}</span>
+          <a *ngIf="isLevelLessThenFour(node) && isNavigationAction(node.data.navigationActionType)"
+             (click)="addNavigationItem($event, node.data.id)" ><i class="fa fa-plus" aria-hidden="true"></i></a>
+          <a (click)="deleteConfirm($event, node.parent.data, node.data)" ><i class="fa fa-times" aria-hidden="true"></i></a>
+        </div>
+      </ng-template>
+    </tree-root>
+  </div>
+
+  <router-outlet (deactivate)="refreshNavigationItems()" ></router-outlet>
+
+</div>
+
+<p-confirmDialog header="Delete Confirmation"
+                 icon="fa fa-trash"
+                 width="425"></p-confirmDialog>

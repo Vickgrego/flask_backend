@@ -1,0 +1,39 @@
+.list-box-container {
+  width: 482px;
+  padding: 0 15px;
+}
+
+.left-list-box-container,
+.right-list-box-container {
+  display: inline-block;
+  width: 44%;
+}
+
+.left-list-box-container select,
+.right-list-box-container select {
+  width: 100%;
+  height: 140px !important;
+}
+
+.center-buttons-block-container {
+  display: inline-block;
+  width: 40px;
+  vertical-align: bottom;
+}
+
+.center-buttons-block-container button {
+  width: 100%;
+}
+
+.management-button-container {
+  padding: 1px;
+
+  button {
+    border-radius: 3px;
+    border: 1px solid lightgrey;
+  }
+
+  button:hover {
+    background-color: lightgrey;
+  }
+}

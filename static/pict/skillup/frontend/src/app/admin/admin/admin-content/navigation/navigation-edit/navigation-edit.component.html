@@ -1,0 +1,87 @@
+<div class="admin-content-right-panel" >
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active' : activeNav == 'navigation'}" (click)="toggleNav('navigation')">Properties</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active' : activeNav == 'assets'}" (click)="toggleNav('assets')">Assets</a>
+    </li>
+  </ul>
+
+  <div class="subnav-item" [ngClass]="{'shown' : activeNav == 'navigation'}">
+    <div class="admin-content-right-panel-header" >
+      <h4>Edit Navigation Item</h4>
+    </div>
+    <div>
+      <form [formGroup]="form" (submit)="save()" >
+
+        <div class="form-control-container" >
+          <div class="form-control" >
+            <label for="navigation-item-name" >Name</label>
+            <input type="text" id="navigation-item-name" formControlName="name" placeholder="Name" maxlength="50" >
+          </div>
+          <app-validation-message [submitted]="formSubmitted" [control]="form.controls.name" ></app-validation-message>
+        </div>
+
+        <div class="form-control-container" >
+          <div class="form-control" >
+            <label for="navigation-item-active" >Is Active?</label>
+            <input id="navigation-item-active" type="checkbox" formControlName="isActive" > Yes
+          </div>
+        </div>
+
+        <div *ngIf="isContentAction()" class="form-control-container" >
+          <div class="form-control" >
+            <label for="navigation-item-tags" >Content Tags</label>
+            <select id="navigation-item-tags" formControlName="contentTags" size="5" multiple="multiple" >
+              <option *ngFor="let item of tags" [ngValue]="item" >{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div *ngIf="isContentAction()" class="form-control-container" >
+          <div class="form-control" >
+            <label for="navigation-item-group-by" >Group By</label>
+            <select id="navigation-item-group-by" formControlName="group" >
+              <option [value]="null" selected="selected" ></option>
+              <option *ngFor="let item of tagGroups" [value]="item.id" >{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div *ngIf="isContentUrlAction()" class="form-control-container" >
+          <div class="form-control" >
+            <label for="navigation-item-url" >URL</label>
+            <input type="text" id="navigation-item-url" formControlName="url" placeholder="URL" >
+          </div>
+          <app-validation-message [submitted]="formSubmitted" [control]="form.controls.url" ></app-validation-message>
+        </div>
+
+        <div class="form-buttons-contaner">
+          <button type="button" class="btn-secondary" (click)="cancel()" >Cancel</button>
+          <button type="submit" class="btn-success" ><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="subnav-item" [ngClass]="{'shown' : activeNav == 'assets'}">
+    <p-dataTable [value]="assets"
+                 selectionMode="single"
+                 (onRowSelect)="editAsset($event)" >
+      <p-column [sortable]="true" styleClass="culumn-item" [style]="{'min-width': '76px', 'width': 'auto'}"field="name" header="Name"></p-column>
+      <p-column [sortable]="true" styleClass="culumn-item" [style]="{'min-width': '110px', 'width': 'auto'}" field="description" header="Description"></p-column>
+      <p-column [sortable]="true" styleClass="culumn-item" [style]="{'width': '111px'}" field="createdDate" header="Date Added">
+        <ng-template let-col let-row="rowData" pTemplate="body">
+          {{row.createdDate|date:short }}
+        </ng-template>
+      </p-column>
+      <p-column [sortable]="true" styleClass="culumn-item" [style]="{'width': '123px'}" field="modifiedDate" header="Date Updated">
+        <ng-template let-col let-row="rowData" pTemplate="body">
+          {{row.modifiedDate|date:short }}
+        </ng-template>
+      </p-column>
+      <p-column [sortable]="true" styleClass="culumn-item" [style]="{'width': '77px'}" field="isActive" header="Active"></p-column>
+    </p-dataTable>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<ngx-gallery [options]="options" [images]="images" (change)="onChange($event)"></ngx-gallery>
+<ul class="carousel-list">
+  <li [ngClass]="{'active': carIndex == i}" *ngFor="let logo of logos; let i = index">
+    <svg>
+      <use [attr.xlink:href]="'../../../../../assets/images/icons.svg#' + logo"></use>
+    </svg>
+  </li>
+</ul>

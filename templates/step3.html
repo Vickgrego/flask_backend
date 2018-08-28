@@ -9,32 +9,39 @@
 
 {% block main %}
     <div class="text-center">
-       <img class="img img-rounded" src="{{ url_for('static', filename='step3.jpeg' ) }}">
+       <img class="img img-rounded" src="{{ url_for('static', filename='pict/step3.jpeg' ) }}">
     </div>
     <div>
-        <h3>Jedi training is tough, but you can do it!</h3>
+        <div class="well well-lg"><h3>Do you remember breakpoints from the previous step?
+            Let's dive into it!!</h3></div>
         <p class="instruction">
             1) Let's go to "Sources" tab and find a "Event Listener Breakpoints"
-            <img class="img-responsive mx-auto d-block image-thumbnail" src="{{ url_for('static', filename='eventlistener.png' ) }}">
+        </p>
+        <div class="breadcrumb">
+            "F12" key --> "Sources" tab --> "Event Listener Breakpoints" in the bottom part of the dev tools.
+        </div>
+        <p class="instruction">
+            <img class="img-responsive mx-auto d-block image-thumbnail" src="{{ url_for('static', filename='pict/eventlistener.png' ) }}">
             <br/>
             2) Select "Mouse" and "click", after that click on any element of the web page.
             Play a little bit with another breakpoints.
-            After you're ready to move on, disable them all with button "Deactivate breakpoints".
-            <img class="img-responsive mx-auto d-block image-thumbnail" src="{{ url_for('static', filename='break.png' ) }}">
+            After you're ready to move on, disable them all with button "Deactivate breakpoints" (or Ctrl + F8).
+            <br/> Additionally, you can pause a website script with "Pause script execution" button.<br/>
+            <img class="img-responsive mx-auto d-block image-thumbnail" src="{{ url_for('static', filename='pict/break.png' ) }}">
             <br/>
             <br/>
             3) So, your script stops when there is a break point in the JS code.
             Let's find out why we need breakpoints -
             <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">about breakpoints.</a>
-            <b> Pay attention to 'Exception Breakpoints" section of the article!</b>
+            <b> Answer the question - how do you pause on exception?!</b>
             <br/><br/>
             4) Ok, you are almost a Jedi! Are you ready for the real task? Find what code causes an exception when user clicks
             "Danger button". "Source" tab and breakpoints can help you!<br/>
             <button type="button" class="btn btn-warning btn-large" onclick="causeException()">Danger button</button>
             <br/>
             <br/>
-            5) To sum up, tell your mentor what part of JS throws an error and explain why we need breakpoints.<br/>
-            When you're done, just click button "Go to challenge 4"
+            5) To sum up, tell your mentor what function in JavaScript throws an error and explain why we need breakpoints.<br/>
+            When you're done, just click button "Go to challenge 4" (no hidden code now :-)).
         </p>
     </div>
 {% endblock %}

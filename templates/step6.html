@@ -6,7 +6,7 @@
 
 {% block main %}
     <div class="text-center">
-       <img class="img img-rounded" src="{{ url_for('static', filename='sword.jpg' ) }}">
+       <img class="img img-rounded" src="{{ url_for('static', filename='pict/sword.jpg' ) }}">
     </div>
     <div class="instruction">
         <div class="well">
@@ -20,7 +20,10 @@
         <p>
             Open 'Animation" tab.
         </p>
-           <img class="img img-rounded" src="{{ url_for('static', filename='animation.png' ) }}">
+       <div class="breadcrumb" >
+           "F12" key --> &#8942; button --> More tools --> Animations
+       </div>
+       <img class="img img-rounded" src="{{ url_for('static', filename='pict/animation.png' ) }}">
         <p>
             You can set a speed to 25% or 10%, you can stop an animation or to watch animation frame by frame.
             <a href="https://developers.google.com/web/tools/chrome-devtools/inspect-styles/animations">Read about animation</a>.
@@ -29,26 +32,40 @@
         <p>
             2) We need to learn how to measure the web page performance.
             <a href="https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/">Read about performance</a>.
-            Open the "Performance monitor" and click "Start heavy operation". Pay attention to the metrics on the Performance monitor.
+            Open the "Performance monitor" and click "Start heavy operation".
+        </p>
+       <div class="breadcrumb" >
+           "F12" key --> &#8942; button --> More tools --> Performance monitor
+       </div>
+        <p>
+            Pay attention to the metrics on the Performance monitor.
         </p>
         <button type="button" class="btn btn-danger" onclick="heavyLoad()">Start heavy operation</button>
         <br/><br/>
         <div id="performance_issue"></div>
         <p>It looks strange, doesn't it?  You need to report a bug to your dev. Open "Performance" and click "Record".
             Save profile of the record.
-            <br/>
         </p>
-        <img class="img img-rounded" src="{{ url_for('static', filename='perform_record.png' ) }}">
+        <div class="breadcrumb">
+           "F12" key --> if you don't see "Performance" try to click >> button --> Performance
+        </div>
+        <img class="img img-rounded" src="{{ url_for('static', filename='pict/perform_record.png' ) }}">
         <br/><br/>
         <p>
             3) Then go to "Memory" tab and "Take heap snapshot". Save it.
             <br/>Now you're ready to create a bug for your developer. Attach the memory heap and profile record to the bug report.
         </p>
+        <div class="breadcrumb">
+           "F12" key --> if you don't see "Memory" try to click >> button --> Memory
+        </div>
         <p>
             4) Last, but not the least, "Audits" tab and Lighthouse tool.
             <a href="https://developers.google.com/web/tools/lighthouse/">Read this about Lighthouse</a>.
         </p>
-        <img class="img img-rounded" src="{{ url_for('static', filename='audit.png' ) }}">
+        <div class="breadcrumb">
+           "F12" key --> if you don't see "Audit" try to click >> button --> Audits --> Perform an audit...
+        </div>
+        <img class="img img-rounded" src="{{ url_for('static', filename='pict/audit.png' ) }}">
         <p>
             Now, make a test via the Lighthouse and report found issues.
         </p>

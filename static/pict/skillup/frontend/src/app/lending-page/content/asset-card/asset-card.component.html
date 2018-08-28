@@ -1,0 +1,89 @@
+<div class="asset-card">
+  <div class="asset-content" [ngSwitch]="asset.assetType">
+    <div class="asset-content-file">
+      <div class="asset-file" [ngClass]="{'img': false}">
+
+        <div class="video" *ngSwitchCase="'URL'">
+          <div class="you-tube-cover" *ngIf="srcUrl" (click)="showYouTube($event)"></div>
+          <iframe id="youTube-frame"
+                  name="youTube-frame"
+                  width="100%"
+                  height="100%"
+                  *ngIf="srcUrl"
+                  [src]="srcUrl"
+                  frameborder="0">
+            <p>Your browser does not support iframes.</p>
+          </iframe>
+          <img alt="noYoutube" *ngIf="!srcUrl" src="../../../../assets/images/youtubeerror.jpg"/>
+        </div>
+
+        <a *ngSwitchCase="'File'" class="asset-file" [href]="asset.shortUrl" target="_blank">
+          <img alt="asset preview" [src]="srcUrl"/>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="asset-info">
+    <p class="text-overflow">{{asset.name}}</p>
+    <p class="text-overflow">{{asset.description}}</p>
+    <p class="text-overflow">{{asset.location}}</p>
+  </div>
+
+  <p *ngIf="!asset.shortUrl" class="asset-link">no-link</p>
+  <a *ngIf="asset.shortUrl" class="asset-link text-overflow" [href]="asset.shortUrl" target="_blank">{{ asset.shortUrl }}</a>
+
+  <div class="sharing-holder">
+    <div class="overlay sharing-modal" [ngClass]="{'show-modal': showShareOptions}">
+      <div class="sharing-modal-content">
+        <div class="share-options-holder">
+          <h6>Share asset</h6>
+          <ul class="share-options">
+            <li *ngFor="let option of shareOptions">
+              <a class="title" [href]="option.href + encodedShareUrl" target="_blank" (click)="toggleOptions()">
+                <span class="title-text">{{option.name}}</span>
+                <app-icon [iconName]="option.name" [iconWidth]="35" [iconHeight]="35"></app-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-cancel" (click)="toggleOptions()">Cancel</button>
+      </div>
+    </div>
+    <button type="button" class="btn btn-share" (click)="toggleOptions()">
+      <app-icon [iconName]="'share'" [iconWidth]="15" [iconHeight]="15"></app-icon>
+      Share
+    </button>
+
+    <div class="sharing-block">
+      <a [href]="option.href + encodedShareUrl" target="_blank" *ngFor="let option of shareOptions">
+        <app-icon [iconName]="option.name" [iconWidth]="30" [iconHeight]="30"></app-icon>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<div class="overlay" *ngIf="asset.assetType == 'URL' && showYouTubeVideo && srcUrl">
+  <div class="video-player">
+    <div class="iframe-holder">
+      <iframe id="youTube-frame"
+              name="youTube-frame"
+              class="iframe-content"
+              allowfullscreen="allowfullscreen"
+              mozallowfullscreen="mozallowfullscreen"
+              msallowfullscreen="msallowfullscreen"
+              oallowfullscreen="oallowfullscreen"
+              webkitallowfullscreen="webkitallowfullscreen"
+              (load)="onYouTubeIframeLoaded()"
+              [src]="srcUrl"
+              frameborder="0">
+        <p>Your browser does not support iframes.</p>
+      </iframe>
+    </div>
+    <button type="button" (click)="hideYouTube()">
+      <i class="fa fa-times fa-2" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

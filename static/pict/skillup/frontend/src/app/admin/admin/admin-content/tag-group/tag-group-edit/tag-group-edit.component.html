@@ -1,0 +1,28 @@
+<div class="admin-content-right-panel" >
+  <div class="admin-content-right-panel-header" >
+    <h4>Edit Tag Group</h4>
+  </div>
+  <div>
+    <form [formGroup]="form" (submit)="save()" >
+
+      <div class="form-control-container" >
+        <div class="form-control" >
+          <label for="navigation-item-name" >Name</label>
+          <input type="text" id="navigation-item-name" formControlName="name" placeholder="Name" maxlength="50" >
+        </div>
+        <app-validation-message [submitted]="formSubmitted" [control]="form.controls.name" ></app-validation-message>
+      </div>
+
+      <div class="form-control-container" >
+        <div class="form-control" >
+          <app-list-box leftLabel="Selected" rightLabel="Available" [optionList]="noGroupTags" [valueList]="tagGroupTags" ></app-list-box>
+        </div>
+      </div>
+
+      <div class="form-buttons-contaner">
+        <button type="button" class="btn-secondary" (click)="cancel()" >Cancel</button>
+        <button type="submit" class="btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div style="overflow: hidden">
+  <div class="admin-content-left-panel" >
+    <span>Tag Groups</span> <a routerLink="/admin/tag-groups/add" ><i class="fa fa-plus" aria-hidden="true"></i></a>
+    <div>
+      <tree-root [nodes]="tagGroups"
+                 [options]="options"
+                 (activate)="onChangeActiveNode($event)" >
+        <ng-template #treeNodeTemplate let-node let-index="index">
+          <span>{{ node.data.name }}</span>
+          <a *ngIf="!node.data.tags || !node.data.tags.length" (click)="deleteConfirm($event, node.data)" ><i class="fa fa-times" aria-hidden="true"></i></a>
+        </ng-template>
+      </tree-root>
+    </div>
+  </div>
+
+  <router-outlet (deactivate)="refreshTagGroups()" ></router-outlet>
+</div>
+
+<p-confirmDialog header="Delete Confirmation"
+                 icon="fa fa-trash"
+                 width="425"></p-confirmDialog>

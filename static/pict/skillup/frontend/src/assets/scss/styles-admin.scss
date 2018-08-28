@@ -1,0 +1,188 @@
+#admin-wrapper {
+  min-width: 1170px;
+
+  .angular-tree-component {
+    cursor: auto;
+  }
+
+  .node-content-wrapper {
+    cursor: pointer;
+  }
+
+  .form-control-container {
+    margin: 5px 0 5px 0;
+  }
+
+  .form-control {
+    //display: inline-block;
+  }
+
+  .form-control-container label {
+    display: inline-block;
+    vertical-align: top;
+    width: 140px;
+    text-align: right;
+    height: 100%;
+    padding: 0.6em;
+  }
+
+  .form-control-container input[type=text], input[type=email], input[type=password], select {
+    width: 200px;
+    padding: .4em 0.6em;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+  }
+  .form-control-container input[type=checkbox] {
+    margin: 0.6em 0;
+  }
+
+  .form-control-container select {
+    height: 2em;
+    padding: 0 .6em;
+  }
+
+  .form-control-container textarea {
+    width: 400px;
+    height: 5em;
+    padding: 0.4em .6em;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+  }
+
+  .form-control-container .text-content {
+    margin: .6em;
+    display: inline-block;
+  }
+
+  .form-buttons-contaner {
+    padding: 15px;
+    width: 100%;
+    text-align: right;
+  }
+
+  app-validation-message {
+    padding-left: 142px;
+    display: block;
+  }
+
+  .admin-content-left-panel {
+    width: 40%;
+    font-size: 1.2em;
+    border-right: solid 1px #C1C5C9;
+    margin: 0 -1px 0 0;
+    float: left;
+  }
+
+  .admin-content-right-panel {
+    width: 60%;
+    padding-left: 15px;
+    border-left: solid 1px #C1C5C9;
+    overflow: hidden;
+  }
+
+  .node-content-wrapper {
+    border-radius: 5px;
+    padding: 3px 5px;
+  }
+  .node-content-wrapper:hover {
+    background: #f7fbff;
+  }
+
+  .admin-content-right-panel-header {
+    text-align: center;
+  }
+
+  .form-control-container {
+    margin: 5px 0 5px 0;
+  }
+
+  .form-control {
+    //display: inline-block;
+    p, span {
+      padding: 3px;
+    }
+  }
+
+  .form-control-container label {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+    height: 100%;
+  }
+
+  .form-control-container select {
+    min-width: 150px;
+  }
+
+  .form-control-container select::-ms-expand {
+    border: none;
+    background: none;
+  }
+
+  .form-buttons-contaner {
+    padding-top: 15px;
+    width: 100%;
+    text-align: right;
+  }
+
+  button {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+  }
+
+  .btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #5bc0de;
+  }
+
+  .btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+  }
+
+  .btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+  }
+
+  .btn-secondary {
+    color: #292b2c;
+    background-color: #fff;
+    border-color: #ccc;
+  }
+
+  app-validation-message {
+    padding-left: 142px;
+    display: block;
+  }
+
+  .culumn-item {
+    overflow: hidden;
+  }
+
+  .fa {
+    padding-right: 5px;
+  }
+
+  .fa-times {
+    color: red;
+  }
+}
+

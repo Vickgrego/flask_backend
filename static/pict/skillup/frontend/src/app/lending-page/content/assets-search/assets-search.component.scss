@@ -1,0 +1,25 @@
+@import '../../../../assets/scss/variables';
+
+.search-results {
+  text-align: center;
+
+  .breadcrumbs {
+    margin-bottom: 20px;
+  }
+
+  .results-length {
+    white-space: nowrap;
+  }
+
+  .icon-binocular {
+    color: #E7E7E9;
+    margin-top: 50px;
+    margin-bottom: 73px;
+  }
+
+  .text-bottom {
+    text-transform: none;
+    font: 400 1rem/1.2 $font-roboto;
+  }
+
+}

@@ -1,0 +1,348 @@
+@import '../../../../assets/scss/variables';
+
+.nav-holder {
+  @media (min-width: $point-lg) {
+    display: flex;
+    justify-content: flex-end;
+
+    &.many-items {
+      display: block;
+
+      .nav-list {
+        @media (min-width: $point-lg) {
+          display: flex;
+          justify-content: space-between;
+
+          .nav-item:not(:first-of-type) {
+            margin-left: 0;
+          }
+        }
+        @media (min-width: 1700px) {
+          justify-content: flex-end;
+
+          .nav-item:not(:first-of-type) {
+            margin-left: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav-list {
+  height: 100%;
+  padding-left: 0;
+  color: $brand-primary;
+
+  @media (min-width: $point-lg) {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2%;
+  }
+  @media (min-width: $point-xl) {
+    padding: 0 5%;
+  }
+
+  .list-item {
+    font-weight: normal;
+    color: inherit;
+
+    &.nav-h4 {
+      @media (min-width: $point-lg) {
+        margin-top: 42px;
+      }
+    }
+  }
+
+  .list-heading {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-5px);
+      border: {
+        style: solid;
+        color: transparent;
+        top-color: currentColor;
+        width: 10px 6px;
+      }
+      transition: .3s;
+    }
+
+    @media (min-width: $point-lg) {
+      &::after {
+        right: -7px;
+        border-width: 0;
+      }
+
+      &.nav-h2::after {
+        border-width: 5px;
+        transform: translateY(-3px);
+      }
+    }
+
+    &.opened::after {
+      @media (max-width: $point-lg - 1px) {
+        border-top-color: transparent;
+        border-bottom-color: currentColor;
+        transform: translateY(-90%);
+      }
+    }
+  }
+
+  h2, .nav-h2 {
+    font-size: 1.28rem;
+    height: 52px;
+    line-height: 52px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #F3F3F3;
+    cursor: pointer;
+    position: relative;
+
+    &.opened {
+      border-bottom: 0 solid #F3F3F3;
+    }
+
+    @media (min-width: $point-lg) {
+      border-bottom: none;
+      font-size: 1rem;
+      height: $nav-height-lg;
+      line-height: $nav-height-lg;
+      z-index: 10000;
+      white-space: nowrap;
+    }
+  }
+
+  a, h2 {
+    &.nav-h2 {
+      padding-left: 20px;
+
+      @media (min-width: $point-lg) {
+        padding-left: 0;
+        padding-right: 8px;
+        text-decoration: none;
+        text-align: right;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  h3, .nav-h3 {
+    font-size: 1.28rem;
+    height: 45px;
+    line-height: 45px;
+    text-transform: uppercase;
+
+    @media (min-width: $point-lg) {
+      font-weight: 700;
+      height: auto;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+  }
+
+  h4, .nav-h4 {
+    height: 45px;
+    line-height: 45px;
+
+    @media (min-width: $point-lg) {
+      height: auto;
+      line-height: 1.2;
+      margin-top: 18px;
+    }
+  }
+
+  a {
+    display: inline-block;
+    height: 45px;
+    line-height: 45px;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+
+    @media (min-width: $point-lg) {
+      height: auto;
+      line-height: 1.2;
+      width: auto;
+      display: inline-block;
+
+      &:not(.nav-h2) {
+        position: relative;
+
+        &::after {
+          content: '';
+          height: 1px;
+          width: 100%;
+          background: #fff;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 2px;
+          transition: .2s;
+        }
+
+        &:hover::after {
+          width: 0;
+        }
+      }
+    }
+
+    &.nav-h3,
+    &.nav-h4 {
+      display: none;
+
+      &.list-item-link {
+        display: block;
+
+        @media (min-width: $point-lg) {
+          display: inline-block;
+          padding-bottom: 1px;
+        }
+      }
+    }
+  }
+
+  ul {
+    color: #fff;
+    background: $dark-grey;
+    padding-left: 20px;
+  }
+
+  .sub-list {
+    display: none;
+
+    a {
+      color: inherit;
+    }
+
+    @media (min-width: $point-lg) {
+      display: block;
+    }
+
+    &.unfold {
+      display: block;
+    }
+  }
+
+  .nav-item  {
+    @media (min-width: $point-lg) {
+      &:not(:first-of-type) {
+        margin-left: 35px;
+      }
+
+      > .sub-list {
+        text-align: left;
+        z-index: 9999;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: $header-height-lg + $nav-height-lg;
+        visibility: hidden;
+        opacity: 0;
+        transition: .5s;
+        transform: scale(1,0) {
+          origin: center top;
+        }
+        display: flex;
+        padding: 70px 7% 35px;
+
+        .sub-list-item {
+          min-width: 200px;
+        }
+      }
+
+      &.hover {
+        > .sub-list {
+          visibility: visible;
+          opacity: 1;
+          transform: scale(1,1);
+        }
+
+        .list-heading::after {
+          border-top-color: transparent;
+          border-bottom-color: currentColor;
+          transform: translateY(-90%);
+        }
+      }
+    }
+    @media (min-width: $point-xl) {
+      &:not(:first-of-type) {
+        margin-left: 45px;
+      }
+    }
+  }
+
+  @media (min-width: $point-lg) {
+    .heading-line {
+      position: absolute;
+      background: $brand-primary;
+      left: 50%;
+      transform: translateX(-50%) scale(1,0) {
+        origin: center bottom;
+      }
+      bottom: 0;
+      height: 7px;
+      width: 64px;
+      transition: .3s;
+
+      &.heading-line-triangle {
+        &::after {
+          content: '';
+          position: absolute;
+          top: calc(100% - 1px);
+          left: 0;
+          transform: scale(0,0) {
+            origin: center top;
+          }
+          transition: .3s;
+          border: {
+            style: solid;
+            color: transparent;
+            top-color: $brand-primary;
+            width: 19px 32px 19px 32px;
+          }
+        }
+      }
+    }
+
+    .nav-item.hover {
+      .heading-line {
+        transform: translateX(-50%) scale(1,1);
+        &.heading-line-triangle {
+          &::after {
+            transform: scale(1,1);
+          }
+        }
+      }
+    }
+
+    .current-page {
+      .nav-h2 {
+        .heading-line {
+          transform: translateX(-50%) scale(1,1);
+        }
+      }
+    }
+
+    .sub-lists-holder {
+      padding: 0 3%;
+    }
+
+    .sub-list3 {
+      padding-left: 0;
+      margin-top: 35px;
+    }
+
+    .sub-list4 {
+      margin-bottom: 30px;
+
+      a {
+        margin-top: 5px;
+      }
+    }
+  }
+}

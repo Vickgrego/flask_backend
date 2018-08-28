@@ -1,0 +1,39 @@
+<div class="admin-content-right-panel" >
+  <div class="admin-content-right-panel-header" >
+    <h4>Add Tag</h4>
+  </div>
+  <div>
+    <form id="tag-form" [formGroup]="form" (submit)="save()" >
+
+      <div class="form-control-container" >
+        <div class="form-control" >
+          <label for="tag-name" >Name</label>
+          <input type="text" id="tag-name" formControlName="name" placeholder="Tag Name" maxlength="50" >
+        </div>
+        <app-validation-message [submitted]="formSubmitted" [control]="form.controls.name" ></app-validation-message>
+      </div>
+
+      <div class="form-control-container" >
+        <div class="form-control" >
+          <label for="tag-active" >Is Active?</label>
+          <input id="tag-active" type="checkbox" formControlName="isActive" > Yes
+        </div>
+      </div>
+
+      <div class="form-control-container" >
+        <div class="form-control" >
+          <label for="tag-tag-group" >Tag Group</label>
+          <select id="tag-tag-group" formControlName="tagGroup" >
+            <option *ngFor="let item of tagGroups" [value]="item.id" >{{ item.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-buttons-contaner">
+        <button type="button" class="btn-secondary" (click)="cancel()" >Cancel</button>
+        <button type="submit" class="btn-success" form="tag-form" ><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+      </div>
+    </form>
+  </div>
+
+</div>

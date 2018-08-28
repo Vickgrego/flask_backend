@@ -1,0 +1,21 @@
+<div class="header-main" [ngClass]="{'showSearch': showSearchInput}">
+  <button class="burger" (click)="toggleMenu()" [ngClass]="{'active': showNav}" *ngIf="!showSearchInput">
+    <span>menu toggle</span>
+  </button>
+  <a class="logo" href="#" [ngClass]="{'logo-hidden': showSearchInput, 'logo-min': logoMin}" (click)="hideSubMenu()"></a>
+  <div class="search-box">
+    <input type="text"
+           class="form-control-search"
+           [ngClass]="{'showInputSearch': showSearchInput}"
+           placeholder="Type anything..."
+           (keyup)="filterAssets()"
+           [(ngModel)]="filterString"
+    >
+    <button class="icon-btn btn-search" (click)="toggleSearch(); hideSubMenu()" type="button">
+      <span>
+        <app-icon [iconName]="btnIcon"></app-icon>
+      </span>
+    </button>
+  </div>
+</div>
+<app-navigator [toogleNav]="showNav" (changeBtn)="triggerBtn($event)" (tagsLength)="logoMin = $event"></app-navigator>

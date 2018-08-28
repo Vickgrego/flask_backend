@@ -1,0 +1,51 @@
+<div class="admin-content-left-panel">
+  <h2>Add User Data</h2>
+  <form id="user-form" [formGroup]="form" (submit)="save()" >
+
+    <div class="form-control-container" >
+      <div class="form-control" >
+        <label for="user-name" >User Name</label>
+        <input type="text" id="user-name" formControlName="userName" placeholder="User Name" maxlength="50" >
+      </div>
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.userName" ></app-validation-message>
+    </div>
+
+    <div class="form-control-container" >
+      <div class="form-control" >
+        <label for="first-name" >First Name</label>
+        <input type="text" id="first-name" formControlName="firstName" placeholder="First Name" maxlength="50" >
+      </div>
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.firstName" ></app-validation-message>
+    </div>
+
+    <div class="form-control-container" >
+      <div class="form-control" >
+        <label for="last-name" >Last Name</label>
+        <input type="text" id="last-name" formControlName="lastName" placeholder="Last Name" maxlength="50" >
+      </div>
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.lastName" ></app-validation-message>
+    </div>
+
+    <div class="form-control-container" >
+      <div class="form-control" >
+        <label for="user-password" >Password</label>
+        <input id="user-password" type="password" formControlName="password" placeholder="Password" maxlength="50" >
+      </div>
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.password" ></app-validation-message>
+    </div>
+
+    <div class="form-control-container" >
+      <div class="form-control" >
+        <label for="user-email" >Email</label>
+        <input type="text" id="user-email" formControlName="email" placeholder="Email" maxlength="50" >
+      </div>
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.email" ></app-validation-message>
+    </div>
+
+    <div class="form-buttons-contaner">
+      <button type="button" class="btn-secondary" (click)="cancel()" >Cancel</button>
+      <button type="submit" class="btn-success" form="user-form" ><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+    </div>
+  </form>
+</div>
+

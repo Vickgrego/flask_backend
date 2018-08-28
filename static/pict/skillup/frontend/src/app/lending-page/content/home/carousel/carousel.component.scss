@@ -1,0 +1,60 @@
+@import '../../../../../assets/scss/variables';
+
+.carousel-list {
+  z-index: 9998;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  height: 100%;
+  width: 75%;
+
+  svg {
+    width: 100%;
+    height: auto;
+    transition: .3s;
+    color: currentColor;
+  }
+
+  @media (max-width: $point-xl - 1px) {
+    li {
+      color: transparent;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      &.active {
+        color: #fff;
+      }
+
+      svg {
+        display: block;
+        width: 75%;
+        max-width: 190px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  @media (min-width: $point-xl) {
+    width: 85%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    li {
+      color: #848484;
+      width: 15%;
+
+      &:not(:last-of-type) {
+        margin-right: 15px;
+      }
+
+      &.active {
+        color: #fff;
+      }
+    }
+  }
+}

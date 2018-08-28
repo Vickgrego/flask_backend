@@ -1,0 +1,127 @@
+@import 'variables';
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+body {
+  font: 400 1rem/1.2 'Roboto', Arial, sans-serif;
+  background: #fff;
+  color: $brand-primary;
+  min-height: 100%;
+
+  .wrapper-holder {
+    height: 100%;
+    width: 100%;
+    //overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &.locked {
+      overflow-y: hidden;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+app-root,
+app-lending-page {
+  display: block;
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+:focus {
+  outline: -webkit-focus-ring-color auto 0;
+}
+
+svg {
+  fill: currentColor;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: inherit;
+}
+
+.h2 {
+  font: 1.36rem/1.2 $font-futura-hv;
+  color: #434F60;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+
+  @media (min-width: $point-lg) {
+    margin-bottom: 35px;
+  }
+}
+
+.breadcrumbs {
+  font: 1.57rem/1.2 $font-futura-hv;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:-webkit-any-link {
+  color: inherit;
+}
+
+.nav-holder {
+  display: none;
+
+  &.show-nav {
+    display: block;
+  }
+
+  @media (min-width: $point-lg) {
+    display: block;
+    height: 55px;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1620px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (min-width: $point-md) {
+    padding: 0 30px;
+  }
+  @media (min-width: $point-xl + 100px) {
+    padding: 0;
+  }
+}
+
+.text-overflow {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

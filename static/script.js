@@ -1,10 +1,11 @@
 var step2_act3_text = `As you\'ve seen, when \"Break on\" is enabled the JavaScript code stopped on button click,
-                        you\'ve been redirected to "Sources" tab and shown a code causing an issue. Keep it im mind,
-                        you would need it in the next step.`
+                        you\'ve been redirected to "Sources" tab and shown a code causing an issue.`
 var step2_act3_text2 = `This is valuable when you want to find a bug after some event,
-                        as creating new element, clicking button etc.`
-var step2_act3_text3 = `Now go straight to the step 3. How? Click Menu on the nav bar and select Step 3.
-                        LOL, can\'t do it? Ok, hint: it\'s :hover event, so just use what you have learned so far.`
+                        as creating new element, clicking button etc. Keep it in mind,
+                        you would need it in the next step.`
+var step2_act3_text3 = `Now go straight to the step 3 - click Menu on the nav bar and select Step 3.
+                        Haha, can\'t do it? Ok, hint - make :hover event on div class=dropdown,
+                        just use what you have learned so far.`
 
 function addItemToList() {
     var div_text = document.getElementById("act2");
@@ -35,6 +36,7 @@ function addItemToList() {
 
 function causeException() {
     // this is bad code
+    console.log("This is logs from JS code");
     throw new Error("I am bad button");
 }
 

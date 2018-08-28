@@ -1,0 +1,28 @@
+<div class="list-box-container" >
+  <div class="left-list-box-container" >
+    <label for="list-box-left" >{{ leftLabel }}</label>
+    <select id="list-box-left" size="10" multiple="multiple" [ngModel]="valueListSelected" (ngModelChange)="valueListChange($event)" >
+      <option *ngFor="let item of valueList" [ngValue]="item" >{{ item.name }}</option>
+    </select>
+  </div>
+  <div class="center-buttons-block-container" >
+    <div class="management-button-container" >
+      <button (click)="removeAll($event)" ><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+    </div>
+    <div class="management-button-container" >
+      <button (click)="remove($event)" ><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+    </div>
+    <div class="management-button-container" >
+      <button (click)="add($event)" ><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+    </div>
+    <div class="management-button-container" >
+      <button (click)="addAll($event)" ><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <div class="right-list-box-container" >
+    <label for="list-box-right" >{{ rightLabel }}</label>
+    <select id="list-box-right" size="10" multiple="multiple" [ngModel]="optionListSelected" (ngModelChange)="optionListChange($event)" >
+      <option *ngFor="let item of optionList" [ngValue]="item" >{{ item.name }}</option>
+    </select>
+  </div>
+</div>

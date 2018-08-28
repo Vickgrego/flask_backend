@@ -1,0 +1,136 @@
+<h2>Create/Edit Asset</h2>
+
+<form [formGroup]="form" (submit)="save()" >
+  <div class="form-control-container">
+    <div class="form-control" >
+      <label for="name">Name: </label>
+      <input type="text" formControlName="name" placeholder="Name" id="name" maxlength="100" >
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.name" ></app-validation-message>
+    </div>
+  </div>
+
+  <div class="form-control-container">
+    <div class="form-control" >
+      <label for="description">Description: </label>
+      <textarea type="text" formControlName="description" placeholder="Description" id="description" maxlength="250" ></textarea>
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.description" ></app-validation-message>
+    </div>
+  </div>
+
+  <div class="form-control-container">
+    <div class="form-control">
+      <label for="active">Is Active?</label>
+      <input type="checkbox" formControlName="isActive" id="active" > Yes
+    </div>
+  </div>
+
+  <div class="form-control-container">
+    <div class="form-control" >
+      <label for="featured">Flag as Featured?</label>
+      <input type="checkbox" formControlName="isFeatured" id="featured" > Yes
+    </div>
+  </div>
+
+  <div class="form-control-container">
+    <div class="form-control" >
+      <label>Select the associated content tags:</label>
+      <div class="tags-block">
+        <label for="search">Search By Tag Name: </label>
+        <input type="text" id="search" (keyup)="filterTags($event)">
+        <div class="scroll-container">
+          <div class="tag-item" *ngFor="let tag of tags | filterName: tagsFilter" (click)="checkTag(tag)">
+            <input type="checkbox" [checked]="tag.checked" id="tag_{{tag.id}}" >
+            <label for="tag_{{tag.id}}">{{tag.name}} ---- {{tag.id }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-control-container">
+    <div class="form-control" >
+      <label for="type">File Type:</label>
+      <select id="type" [disabled]="editMode" (change)="editMode ? form.controls['assetType'].setValue(fileType) : onTypeChange($event)" formControlName="assetType">
+        <option disabled selected value="">-select-</option>
+        <option *ngFor="let type of fileTypes" [disabled]="editMode" [value]="type.id">{{type.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-control-container" *ngIf="fileType == 'URL'">
+    <div class="form-control" >
+      <label for="youtubeUrl">YouTube URL</label>
+      <input type="text" id="youtubeUrl" placeholder="https://youtube.com/..." formControlName="youtubeUrl" >
+      <app-validation-message [submitted]="formSubmitted" [control]="form.controls.youtubeUrl" ></app-validation-message>
+    </div>
+  </div>
+
+  <div class="form-buttons-contaner">
+    <button class="btn btn-success"
+            type="submit"
+            [disabled]="!form.valid || (secondStepId && !editMode)"
+            *ngIf="showBtn">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      {{fileType == 'URL' ? 'Save' : 'Next'}}
+    </button>
+  </div>
+</form>
+
+
+<form id="form1" (submit)="addFiles()">
+
+  <div class="form-control-container" *ngIf="fileType == 'File' && secondStepId">
+    <div class="form-control" >
+      <label for="upload" class="inputfile-label btn-info"><i class="fa fa-upload" aria-hidden="true"></i>Upload File(s):</label>
+      <input type="file" class="inputfile btn-info" (change)="onChangeFile($event)" #fileInput name="FilesToCreate" id="upload" multiple >
+      <p *ngIf="fileList?.length" class="files-list">
+        Attached files:
+        <span class="file-name" *ngFor="let file of fileList">
+          <a (click)="deleteFile(file, false)"><i class="fa fa-times" aria-hidden="true"></i></a> {{file.name}};
+        </span>
+      </p>
+      <p *ngIf="existingFiles?.length" class="files-list">
+        Existing files:
+        <span class="file-name" *ngFor="let file of existingFiles">
+          <a (click)="deleteFile(file, true)"><i class="fa fa-times" aria-hidden="true"></i></a> {{file.name}};
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="form-control-container" *ngIf="fileType == 'File' && secondStepId">
+    <div class="form-control" >
+      <div class="inline">
+        <label for="thumbnail" class="inputfile-label btn-info"><i class="fa fa-upload" aria-hidden="true"></i>Add Thumbnail: </label>
+        <input class="inputfile btn-info" [ngClass]="{'hidden': thumbnailList.length}" type="file" accept="image/*" (change)="onChangeThumbnail($event)" id="thumbnail" >
+        <div *ngIf="thumbnailList.length">or select one:</div>
+        <select name="thumbnails" id="thumbnails" *ngIf="thumbnailList.length" (change)="selectThumbnail($event)" >
+          <option disabled selected value="">-select-</option>
+          <option *ngFor="let thumbnail of thumbnailList" [value]="thumbnail.name">{{thumbnail.name}}</option>
+        </select>
+      </div>
+
+      <!--<img [src]="thumbnail.string" width="100px" height="100px" alt="">-->
+      <div class="asset-content" >
+        <div class="asset-content-file">
+          <div class="asset-file" [ngClass]="{'img': false}">
+            <a class="asset-file" target="_blank">
+              <img alt="asset preview" [src]="thumbnail.string"/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-buttons-contaner">
+    <button class="btn btn-success"
+            type="submit"
+            [disabled]="false"
+            *ngIf="fileType == 'File' && secondStepId" >
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      Save
+    </button>
+  </div>
+
+</form>

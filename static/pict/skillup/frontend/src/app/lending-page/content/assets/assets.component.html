@@ -1,0 +1,27 @@
+<div class="assets-list-holder">
+  <div class="container">
+    <h2 class="h2"><ng-content></ng-content></h2>
+    <ul class="assets-list test" *ngIf="assets">
+      <li *ngFor="let asset of assets">
+        <app-asset-card [asset]="asset"></app-asset-card>
+      </li>
+    </ul>
+  </div>
+  <ul class="group-list test-2" *ngIf="groups">
+    <li *ngFor="let group of adaptedGroups"
+        [ngClass]="{'active': group.active}">
+      <h3 (click)="toggleItemAccordion(group)">
+        <span class="container">
+          {{group.sectionLabel || "&nbsp;" }}
+        </span>
+      </h3>
+      <div class="container list-holder">
+        <ul class="assets-list" *ngIf="assets">
+          <li *ngFor="let asset of group.assets">
+            <app-asset-card [asset]="asset"></app-asset-card>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,74 @@
+<nav class="nav-holder" [ngClass]="{'show-nav': toogleNav, 'many-items': wideMenu}">
+  <ul class="nav-list">
+    <li class="nav-item"
+        *ngFor="let headMenuItem of tags; let i = index"
+        [ngClass]="{'current-page': activeMenuItemId == headMenuItem.id, 'hover': showSubMenu && activeItemId == i}"
+        (mouseover)="toggleSubMenu(true, i)"
+        (mouseleave)="toggleSubMenu(false, i)">
+
+      <h2 class="nav-h2 list-item"
+          *ngIf="headMenuItem.children?.length"
+          [ngClass]="{'opened': openedAccordionId == i, 'list-heading': headMenuItem.children?.length}"
+          (click)="openAccordionNav(i)">
+        {{ headMenuItem.name }}
+        <span class="heading-line heading-line-triangle"></span>
+      </h2>
+      <a class="nav-h2"
+         *ngIf="!headMenuItem.children?.length"
+         (click)="showAssets($event, headMenuItem); hideSubMenu()">
+        {{ headMenuItem.name }}
+        <span class="heading-line"></span>
+      </a>
+
+      <ul class="sub-list"
+          [ngClass]="{'unfold': openedAccordionId == i}"
+          *ngIf="headMenuItem.children?.length">
+        <li class="sub-list-item" *ngFor="let groupTitle of headMenuItem.children; let j = index">
+
+          <h3 class="nav-h3 list-item"
+              [ngClass]="{'opened': openedSubId == j, 'list-heading': groupTitle.children?.length}"
+              (click)="openSubNav(j)"
+              *ngIf="groupTitle.children?.length">
+            {{ groupTitle.name }}
+          </h3>
+          <a class="nav-h3"
+             *ngIf="!groupTitle.children?.length"
+             [ngClass]="{'list-item-link': !groupTitle.children?.length}"
+             (click)="showAssets($event, groupTitle); hideSubMenu()">
+            {{ groupTitle.name }}
+          </a>
+
+          <ul class="sub-list sub-list3"
+              [ngClass]="{'unfold': openedSubId == j}"
+              *ngIf="groupTitle.children?.length">
+            <li *ngFor="let item of groupTitle.children; let k = index">
+
+              <h4 class="nav-h4 list-item"
+                  [ngClass]="{'opened': openedSubSubId == k, 'list-heading': item.children?.length}"
+                  (click)="openSubSubNav(k)"
+                  *ngIf="item.children?.length">
+                {{ item.name }}
+              </h4>
+              <a class="nav-h4"
+                 *ngIf="!item.children?.length"
+                 [ngClass]="{'list-item-link': !item.children?.length}"
+                 (click)="showAssets($event, item); hideSubMenu()">
+                {{ item.name }}
+              </a>
+
+              <ul class="sub-list sub-list4"
+                  [ngClass]="{'unfold': openedSubSubId == k}"
+                  *ngIf="item.children?.length">
+                <li *ngFor="let subItem of item.children">
+                  <a (click)="showAssets($event, subItem); hideSubMenu()">{{ subItem.name }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+</nav>

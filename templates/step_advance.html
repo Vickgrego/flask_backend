@@ -6,7 +6,7 @@
 
 {% block main %}
     <div class="text-center">
-       <img class="img img-rounded" src="{{ url_for('static', filename='advance.jpg' ) }}">
+       <img class="img img-rounded" src="{{ url_for('static', filename='pict/advance.jpg' ) }}">
     </div>
     <div class="instruction">
         <div class="well">
@@ -15,29 +15,38 @@
     </div>
      <p class="instruction">
         Yeah! You've learnt previously how to simulate a screen resolution.
-        But the problem here, that it's just simulationng.
+        But the problem here, that it's just simulation.
         You never know how a web page behaves on the real device.
         <br/> <br/>
         Here is the tough task! Sometimes, you have no remote server to test a web app
-        and you're forced to run a dev site on the localhost. Read this article
+        and you're forced to run a dev site on the localhost. There are plenty ways to run a server on localhost and
+        access it from your phone. For example, you can run some server on you machine and access your computer's ip
+        from the mobile phone,
+        <a href="https://stackoverflow.com/questions/51026532/json-server-cannot-access-via-local-ip">as it discussed here.</a>
+        <br/><br/>
+        But we would like to discuss another way, how Chrome dev tools can help us. Read this article at first:
         <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/local-server"> Access Local Server.</a>
-        Now, load the archive  from here <a href="https://drive.google.com/open?id=1iIPYT9v72lnEsJYP4UPOEttw0_rLO3P6">Archive</a>
-        , make sure you have node.js installed on your machine.
+        Now, load the archive from here <a href="https://drive.google.com/open?id=1iIPYT9v72lnEsJYP4UPOEttw0_rLO3P6">Archive</a>,
+         make sure you have node.js installed on your machine.
         Extract an archive and go to the frontent directory.
         From this directory run commands in your command line.
      </p>
-        <div class="well small-well instruction">
-            <code>npm i</code><br/>
-            <code>npm start</code>
-        </div>
+    <div class="breadcrumb">
+        extract "skillup.7z" --> go to skillup directory --> frontent --> open a command line
+    </div>
+    <div class="well small-well instruction">
+        <code>npm i</code><br/>
+        <code>npm start</code>
+    </div>
      <p class="instruction">
-        After the server starts, go to <mark>localhost:4200</mark>. Now, access this localhost on your Android device.
+        After the server starts, open <mark>localhost:4200</mark> in your browser.
+        Now, access this localhost on your Android device.
         It's not hard, just select "Port forwarding" and "Add Rule" "4200: localhost:4200" as on the image below.
      </p>
-        <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='add_port.png' ) }}">
+        <img class="img-responsive mx-auto image-thumbnail" src="{{ url_for('static', filename='pict/add_port.png' ) }}">
     <p class="instruction">
         <br/>Now you can start you testing even before the real backend would be deployed!<br/>
-        We have no additional tasks for you! You're ready to join dark force! You thought it's jedi training? No way!
-        There is only dark power what can help you to find all bugs!
+        We have no additional tasks for you! You're ready to join ...dark force!
+        There is only dark power can help you to find all bugs!
     </p>
 {% endblock %}

@@ -1,0 +1,5 @@
+<div [hidden]="!hasMessage" class="validation-message" >
+  <div *ngFor="let msg of messages" >
+    <span>{{ msg }}</span>
+  </div>
+</div>

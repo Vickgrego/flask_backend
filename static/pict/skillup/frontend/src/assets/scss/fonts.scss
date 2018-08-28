@@ -1,0 +1,51 @@
+$path-fonts: '/assets/fonts';
+
+@font-face {
+  font-family:'FuturaBkBTBook';
+  src: url('#{$path-fonts}/FuturaBkBTBookItalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: normal;
+}
+@font-face {
+  font-family:'FuturaHvBT';
+  src: url('#{$path-fonts}/FuturaHvBTHeavy.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family:'SF UI Text';
+  src: url('#{$path-fonts}/SFUITextRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family:'SF UI Text';
+  src: url('#{$path-fonts}/SFUITextMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family:'Roboto';
+  src: url('#{$path-fonts}/RobotoLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family:'Roboto';
+  src: url('#{$path-fonts}/RobotoRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family:'Roboto';
+  src: url('#{$path-fonts}/RobotoBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}

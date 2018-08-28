@@ -1,0 +1,72 @@
+@import 'variables';
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.icon-btn {
+  span {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.btn-search {
+  width: 30px;
+  height: 30px;
+
+  app-icon,
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+
+  @media (min-width: $point-lg) {
+    width: 27px;
+    height: 28px;
+    color: #fff;
+  }
+}
+
+.btn-share {
+  border-radius: 20px;
+  width: 100%;
+  max-width: 150px;
+  height: 35px;
+  text-transform: uppercase;
+  background: $brand-primary;
+  color: #fff;
+  transition: .3s;
+
+  &:active {
+    background: #1B202E;
+  }
+
+  svg {
+    margin-right: 10px;
+    transform: translateY(2px);
+  }
+}
+
+.btn-to-top {
+  border-radius: 20px;
+  width: 150px;
+  height: 35px;
+  text-transform: uppercase;
+  background: $brand-secondary;
+  color: #fff;
+  transition: .3s;
+
+  &:active {
+    background: $brand-primary;
+  }
+
+  svg {
+    margin-right: 10px;
+    transform: translateY(2px);
+  }
+}

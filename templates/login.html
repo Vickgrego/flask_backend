@@ -6,17 +6,25 @@
 
 {% block main %}
     <div class="text-center">
-       <img class="img img-rounded" src="{{ url_for('static', filename='login.png' ) }}">
+       <img class="img img-rounded" src="{{ url_for('static', filename='pict/login.png' ) }}">
     </div>
     <div>
-        <h3>First step, kido!</h3>
+        <div class="well"><h3>First step!</h3></div>
         <p class="instruction">
-            1) You need to use your force and "Elements" tab to get a hidden password and login<br/><br/>
-            2) Next you need to click "Login" button! It's hidden! How to click a hidden button?<br/>
-            In the 'Elements" tab find #login-hidden-button
-            and just deselect {display: none;} css attribute in "Styles" tab!
+            1) You need to use "Elements" tab to find a hidden password and login.<br/><br/>
         </p>
-       <img class="img img-rounded" src="{{ url_for('static', filename='display_none.png' ) }}">
+        <div class="breadcrumb">
+            "F 12" key --> "Elements" tab
+        </div>
+        <p class="instruction">
+            2) Next you need to click "Login" button! It's hidden! How to click a hidden button?<br/>
+            In the 'Elements" tab find <code>#login-hidden-button</code>
+            and just deselect <code>display: none;</code> css attribute in "Styles" tab!
+        </p>
+        <div class="breadcrumb">
+            "F 12" key --> "Elements" tab --> "Styles" in the bottom half of the dev tools window.
+        </div>
+       <img class="img img-rounded" src="{{ url_for('static', filename='pict/display_none.png' ) }}">
         <br/><br/>
     </div>
     <form action="{{ url_for('login') }}" method="post">

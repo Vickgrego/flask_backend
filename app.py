@@ -1,11 +1,13 @@
 from tempfile import mkdtemp
 import os
-from flask import Flask, request, url_for, jsonify
+from flask import Flask, request, url_for, jsonify, abort
 from flask_basicauth import BasicAuth
 from flask_session import Session
 
 import credentials
+from validator import *
 from helpers import *
+import DB
 
 
 ERROR = "I feel disturbance in force {}"
@@ -26,6 +28,12 @@ app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+@app.errorhandler(InvalidUsage)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
 
 @app.route("/")
 @basic_auth.required
@@ -135,6 +143,28 @@ def step_advance():
 @app.route("/getjson", methods=["GET"])
 def getjson():
     return jsonify({"secretCode":"jedi", "bugMessage":"This should not be here!"})
+
+@app.route("/crime", methods=["GET", "POST"])
+def crime():
+    """
+    very dirty method!
+    :return: json
+    """
+    if request.method == "POST":
+        req = request.get_json()
+        if validate_request(req, schema_post_suspect):
+            name = req["name"]
+            gender = req["gender"]
+            if gender == "female":
+                DB.add_to_DB(name, gender)
+                return jsonify({"success": "You added a new suspect"})
+            else:
+                raise InvalidUsage("error: only gender female is allowed", status_code=500)
+        else:
+            raise InvalidUsage("error: invalid post body", status_code=400)
+    else:
+        return jsonify({"crime": "The rabbit has been killed! Help find the killer of the rabbit!",
+                        "suspects": DB.suspect})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

@@ -1,0 +1,27 @@
+<div>
+  <h2>Users</h2> <button routerLink="/admin/users/add" class="top-right btn-success" ><i class="fa fa-plus" aria-hidden="true"></i> Add User</button>
+  <p-dataTable [value]="users"
+               [lazy]="true"
+               [totalRecords]="totalCount"
+               [rows]="pageSize"
+               [paginator]="true"
+               [pageLinks]="3"
+               [rowsPerPageOptions]="[10,25,50]"
+               selectionMode="single"
+               (onRowSelect)="editUser($event)"
+               (onLazyLoad)="onPage($event)" >
+    <p-header>List of Users</p-header>
+    <p-column styleClass="culumn-item" field="userName" header="User Name"></p-column>
+    <p-column styleClass="culumn-item" field="firstName" header="First Name"></p-column>
+    <p-column styleClass="culumn-item" field="lastName" header="Last Name"></p-column>
+    <p-column styleClass="culumn-item" field="email" header="Email"></p-column>
+    <!--<p-column [style]="{'width':'30px'}" >-->
+      <!--<ng-template pTemplate="header">-->
+        <!--<i class="fa fa-pencil-square-o" aria-hidden="true"></i>-->
+      <!--</ng-template>-->
+      <!--<ng-template let-user="rowData" pTemplate="body">-->
+        <!--<a href (click)="editUser(user)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
+      <!--</ng-template>-->
+    <!--</p-column>-->
+  </p-dataTable>
+</div>
