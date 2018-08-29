@@ -140,6 +140,12 @@ def step_advance():
     if request.method == "GET":
         return render_template("step_advance.html")
 
+@basic_auth.required
+@app.route("/darklord", methods=["GET"])
+def darklord():
+    if request.method == "GET":
+        return render_template("darklord.html")
+
 @app.route("/getjson", methods=["GET"])
 def getjson():
     return jsonify({"secretCode":"jedi", "bugMessage":"This should not be here!"})
@@ -162,9 +168,27 @@ def crime():
                 raise InvalidUsage("error: only gender female is allowed", status_code=500)
         else:
             raise InvalidUsage("error: invalid post body", status_code=400)
-    else:
+    elif request.method == "GET":
         return jsonify({"crime": "The rabbit has been killed! Help find the killer of the rabbit!",
                         "suspects": DB.suspect})
+
+@app.route("/crime/suspect/<int:id>", methods=["GET"])
+def suspect(id):
+    suspect_id = id - 1
+    try:
+        suspect = DB.suspect[suspect_id]
+        return jsonify(suspect)
+    except IndexError:
+        raise InvalidUsage("error: not found suspect", status_code=404)
+
+@app.route("/crime/alibi/<int:id>", methods=["GET"])
+def alibi(id):
+    suspect_id = id - 1
+    try:
+        suspect = DB.suspect[suspect_id]
+        return jsonify({"": ""})
+    except IndexError:
+        raise InvalidUsage("error: not found suspect", status_code=404)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
