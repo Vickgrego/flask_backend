@@ -13,13 +13,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="./static/script.js"></script>
         <title>Chrome Dev Tools skillup {% block title %}{% endblock %}</title>
-
     </head>
 
     <body>
-
         <div class="container">
-
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -33,21 +30,16 @@
                     </div>
                 </div>
             </nav>
-
             <main>
                 <p class="validation_error">
                     {{ error }}
                 </p>
                 {% block main %}{% endblock %}
             </main>
-
             <footer class="container-fluid">
                 <p>MobiDeb QA Jedi department</p>
                 {% block footer %}{% endblock %}
             </footer>
-            
         </div>
-
     </body>
-
 </html>
