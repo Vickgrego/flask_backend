@@ -141,8 +141,8 @@ def step_advance():
         return render_template("step_advance.html")
 
 @basic_auth.required
-@app.route("/darklord", methods=["GET"])
-def darklord():
+@app.route("/dart", methods=["GET"])
+def dart():
     if request.method == "GET":
         return render_template("darklord.html")
 
@@ -172,23 +172,32 @@ def crime():
         return jsonify({"crime": "The rabbit has been killed! Help find the killer of the rabbit!",
                         "suspects": DB.suspect})
 
-@app.route("/crime/suspect/<int:id>", methods=["GET"])
+@app.route("/crime/suspect/<int:id>", methods=["GET", "DELETE"])
 def suspect(id):
     suspect_id = id - 1
-    try:
-        suspect = DB.suspect[suspect_id]
-        return jsonify(suspect)
-    except IndexError:
-        raise InvalidUsage("error: not found suspect", status_code=404)
+    print(suspect_id)
+    if request.method == "GET":
+        try:
+            suspect = DB.suspect[suspect_id]
+            return jsonify(suspect)
+        except IndexError:
+            raise InvalidUsage("error: not found suspect", status_code=404)
+    elif request.method == "DELETE":
+        try:
+            del DB.suspect[suspect_id]
+            return jsonify({f'delete': 'deleted ${id}'})
+        except IndexError:
+            raise InvalidUsage("error: not found suspect", status_code=404)
 
-@app.route("/crime/alibi/<int:id>", methods=["GET"])
-def alibi(id):
-    suspect_id = id - 1
-    try:
-        suspect = DB.suspect[suspect_id]
-        return jsonify({"": ""})
-    except IndexError:
-        raise InvalidUsage("error: not found suspect", status_code=404)
+@app.route("/crime/ask_witness", methods=["GET", "POST"])
+def alibi():
+    if request.method == "GET":
+        # return jsonify({"Suspect is": "Mursik"})
+        raise InvalidUsage("Cannot tell the truth", status_code=401)
+    elif request.method == "POST":
+        return jsonify({"success": "200 ok"})
+    else:
+        raise InvalidUsage("incorrect request", status_code=400)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
