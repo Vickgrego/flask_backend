@@ -179,7 +179,8 @@ def suspect(id):
     if request.method == "GET":
         try:
             suspect = DB.suspect[suspect_id]
-            return jsonify(suspect)
+            code = DB.code[suspect_id]
+            return jsonify({**suspect, **code})
         except IndexError:
             raise InvalidUsage("error: not found suspect", status_code=404)
     elif request.method == "DELETE":
@@ -192,8 +193,8 @@ def suspect(id):
 @app.route("/crime/ask_witness", methods=["GET", "POST"])
 def alibi():
     if request.method == "GET":
-        # return jsonify({"Suspect is": "Mursik"})
-        raise InvalidUsage("Cannot tell the truth", status_code=401)
+        # return jsonify({"hi": "true"})
+        raise InvalidUsage("The truth is unavailable", status_code=500)
     elif request.method == "POST":
         return jsonify({"success": "200 ok"})
     else:
@@ -201,4 +202,4 @@ def alibi():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run()
+    app.run(debug=True)

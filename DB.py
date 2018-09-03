@@ -1,7 +1,9 @@
 
 suspect = [{"suspect_id": 1, "name": "Vasya", "gender":"male"},
            {"suspect_id": 2, "name": "Katya", "gender": "female"},
-           {"suspect_id": 3, "name": "cat Mursik", "gender": "not sure"}]
+           {"suspect_id": 3, "name": "Mursik", "gender": "not sure"}]
+
+code = [{"code": "no code"}, {"code": "no code"}, {"code": "sherlock"}, {"code" :"no code"}]
 
 suspect_id = 4
 
